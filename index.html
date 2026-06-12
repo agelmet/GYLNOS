@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>George Glynos — Dentist in Rhodes | A Reason to Smile Again</title>
+<meta name="description" content="Dr. George Glynos, Oral Surgeon with 15+ years of experience. Advanced digital dentistry, aesthetics, implants and sports dentistry across two clinics in Rhodes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0c2230;
+  --deep:#103247;
+  --teal:#0f6e7d;
+  --aqua:#2ba6ad;
+  --mint:#cfe9e6;
+  --sky:#eef6f6;
+  --cloud:#f7fbfb;
+  --paper:#ffffff;
+  --gold:#c8a45c;
+  --line:rgba(16,50,71,.12);
+  --shadow:0 24px 60px -28px rgba(16,50,71,.45);
+  --display:'Fraunces',Georgia,serif;
+  --body:'Manrope',system-ui,sans-serif;
+  --ease-out-expo:cubic-bezier(.16,1,.3,1);
+  --ease-soft:cubic-bezier(.4,0,.2,1);
+  --container:1240px;
+  --pad:clamp(1.25rem,5vw,5rem);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--body);
+  background:var(--cloud);
+  color:var(--ink);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:var(--aqua);color:#fff}
+::-webkit-scrollbar{width:11px}
+::-webkit-scrollbar-track{background:var(--sky)}
+::-webkit-scrollbar-thumb{background:var(--teal);border-radius:20px;border:3px solid var(--sky)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+.lang-hide{display:none!important}
+
+/* ---------- LOADER ---------- */
+#loader{
+  position:fixed;inset:0;z-index:1000;
+  background:var(--deep);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:1.2rem;
+  transition:opacity .8s var(--ease-soft),visibility .8s;
+}
+#loader.done{opacity:0;visibility:hidden}
+.loader-mark{
+  width:74px;height:74px;
+  animation:floaty 2.4s ease-in-out infinite;
+}
+.loader-mark svg{width:100%;height:100%}
+.loader-name{
+  font-family:var(--display);
+  color:#fff;font-size:clamp(1.3rem,4vw,2rem);
+  letter-spacing:.04em;font-weight:400;
+  opacity:0;animation:fadeUp .9s var(--ease-out-expo) .25s forwards;
+}
+.loader-bar{
+  width:140px;height:2px;background:rgba(255,255,255,.18);
+  overflow:hidden;border-radius:2px;
+}
+.loader-bar i{
+  display:block;height:100%;width:40%;
+  background:var(--aqua);
+  animation:slide 1.3s var(--ease-soft) infinite;
+}
+@keyframes slide{0%{transform:translateX(-120%)}100%{transform:translateX(360%)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+/* ---------- NAV ---------- */
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:900;
+  transition:background .4s var(--ease-soft),box-shadow .4s,padding .4s;
+  padding:clamp(1rem,2.5vw,1.6rem) var(--pad);
+}
+header.scrolled{
+  background:rgba(255,255,255,.86);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--line);
+  padding-top:.85rem;padding-bottom:.85rem;
+}
+.nav-inner{
+  max-width:var(--container);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.brand{display:flex;align-items:center;gap:.65rem;color:#fff;transition:color .4s}
+header.scrolled .brand{color:var(--ink)}
+.brand svg{width:30px;height:30px;flex:none}
+.brand-name{font-family:var(--display);font-weight:500;line-height:1;font-size:1.02rem;letter-spacing:.02em}
+.brand-name span{display:block;font-family:var(--body);font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;font-weight:600;opacity:.7;margin-top:.25rem}
+.nav-links{display:flex;align-items:center;gap:clamp(1rem,2vw,2rem)}
+.nav-links a{color:#fff;font-size:.82rem;font-weight:500;letter-spacing:.02em;transition:color .4s,opacity .3s;opacity:.92;position:relative}
+header.scrolled .nav-links a{color:var(--deep)}
+.nav-links a.lnk::after{content:"";position:absolute;left:0;bottom:-5px;height:1.5px;width:0;background:var(--aqua);transition:width .35s var(--ease-out-expo)}
+.nav-links a.lnk:hover::after{width:100%}
+.nav-links a.lnk:hover{opacity:1}
+.nav-cta{
+  background:var(--aqua);color:#fff!important;
+  padding:.7rem 1.3rem;border-radius:40px;font-weight:600;
+  opacity:1!important;transition:background .3s,transform .3s;
+}
+.nav-cta:hover{background:var(--teal);transform:translateY(-2px)}
+.lang-toggle{display:flex;align-items:center;gap:.5rem;margin-left:.4rem}
+.flag-btn{
+  width:34px;height:24px;border-radius:5px;overflow:hidden;
+  opacity:.5;transition:opacity .3s,transform .3s,box-shadow .3s;
+  box-shadow:0 0 0 1px rgba(255,255,255,.35);
+  display:block;
+}
+header.scrolled .flag-btn{box-shadow:0 0 0 1px var(--line)}
+.flag-btn.active{opacity:1;box-shadow:0 0 0 2px var(--aqua)}
+.flag-btn:hover{opacity:1;transform:translateY(-1px)}
+.flag-btn svg{width:100%;height:100%}
+.burger{display:none;width:30px;height:22px;position:relative;flex:none}
+.burger span{position:absolute;left:0;height:2px;width:100%;background:#fff;border-radius:2px;transition:.4s var(--ease-out-expo)}
+header.scrolled .burger span{background:var(--ink)}
+.burger span:nth-child(1){top:0}
+.burger span:nth-child(2){top:10px}
+.burger span:nth-child(3){top:20px}
+body.menu-open .burger span{background:#fff}
+body.menu-open .burger span:nth-child(1){top:10px;transform:rotate(45deg)}
+body.menu-open .burger span:nth-child(2){opacity:0}
+body.menu-open .burger span:nth-child(3){top:10px;transform:rotate(-45deg)}
+
+/* mobile overlay */
+.overlay{
+  position:fixed;inset:0;z-index:850;
+  background:var(--deep);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;
+  clip-path:circle(0% at calc(100% - 40px) 40px);
+  transition:clip-path .7s var(--ease-out-expo);
+  pointer-events:none;
+}
+body.menu-open .overlay{clip-path:circle(150% at calc(100% - 40px) 40px);pointer-events:auto}
+.overlay a{color:#fff;font-family:var(--display);font-size:clamp(1.6rem,7vw,2.4rem);font-weight:400;opacity:0;transform:translateY(14px);transition:.5s var(--ease-out-expo)}
+body.menu-open .overlay a{opacity:1;transform:none}
+body.menu-open .overlay a:nth-child(1){transition-delay:.12s}
+body.menu-open .overlay a:nth-child(2){transition-delay:.18s}
+body.menu-open .overlay a:nth-child(3){transition-delay:.24s}
+body.menu-open .overlay a:nth-child(4){transition-delay:.3s}
+body.menu-open .overlay a:nth-child(5){transition-delay:.36s}
+body.menu-open .overlay a:nth-child(6){transition-delay:.42s}
+.overlay-flags{display:flex;gap:1rem;margin-top:1rem;opacity:0;transition:.5s .5s}
+body.menu-open .overlay-flags{opacity:1}
+.overlay-flags .flag-btn{width:46px;height:32px}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;min-height:100svh;
+  display:flex;align-items:flex-end;
+  padding:0 var(--pad) clamp(3rem,7vw,5.5rem);
+  overflow:hidden;background:var(--deep);
+}
+.hero-img{
+  position:absolute;inset:0;z-index:0;
+}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-img::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(8,28,40,.55) 0%,rgba(8,28,40,.15) 30%,rgba(8,28,40,.55) 70%,rgba(8,28,40,.92) 100%),
+    radial-gradient(120% 80% at 80% 20%,rgba(43,166,173,.28),transparent 60%);
+}
+.hero-arc{
+  position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);
+  width:min(86vw,900px);height:auto;z-index:1;pointer-events:none;
+  opacity:0;
+}
+.hero-arc path{stroke:rgba(207,233,230,.5);stroke-width:2;fill:none;
+  stroke-dasharray:1200;stroke-dashoffset:1200;}
+.hero.in .hero-arc{opacity:1;transition:opacity 1s 1s}
+.hero.in .hero-arc path{animation:draw 2.4s var(--ease-out-expo) 1.1s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero-content{position:relative;z-index:2;max-width:var(--container);margin:0 auto;width:100%}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  color:var(--mint);font-size:.74rem;font-weight:600;
+  letter-spacing:.28em;text-transform:uppercase;margin-bottom:1.4rem;
+  opacity:0;transform:translateY(20px);
+}
+.hero-eyebrow::before{content:"";width:34px;height:1px;background:var(--aqua)}
+.hero h1{
+  font-family:var(--display);color:#fff;font-weight:400;
+  font-size:clamp(2.9rem,9vw,6.7rem);line-height:.98;letter-spacing:-.02em;
+  max-width:14ch;margin-bottom:1.6rem;
+}
+.hero h1 .word{display:inline-block;opacity:0;transform:translateY(40px)}
+.hero h1 em{font-style:italic;color:var(--mint)}
+.hero-sub{
+  color:rgba(255,255,255,.84);font-size:clamp(1rem,2vw,1.22rem);
+  max-width:46ch;font-weight:300;margin-bottom:2.2rem;
+  opacity:0;transform:translateY(20px);
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center;opacity:0;transform:translateY(20px)}
+.btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:1rem 1.7rem;border-radius:46px;font-weight:600;font-size:.92rem;
+  transition:transform .35s var(--ease-out-expo),background .3s,box-shadow .3s;
+}
+.btn-primary{background:var(--aqua);color:#fff;box-shadow:0 14px 34px -14px rgba(43,166,173,.8)}
+.btn-primary:hover{background:#fff;color:var(--deep);transform:translateY(-3px)}
+.btn-ghost{color:#fff;border:1px solid rgba(255,255,255,.4)}
+.btn-ghost:hover{background:#fff;color:var(--deep);transform:translateY(-3px)}
+.btn svg{width:17px;height:17px}
+.hero.in .hero-eyebrow{animation:fadeUp .8s var(--ease-out-expo) .3s forwards}
+.hero.in .hero h1 .word{animation:fadeUp .9s var(--ease-out-expo) forwards}
+.hero.in h1 .word:nth-child(1){animation-delay:.45s}
+.hero.in h1 .word:nth-child(2){animation-delay:.55s}
+.hero.in h1 .word:nth-child(3){animation-delay:.65s}
+.hero.in h1 .word:nth-child(4){animation-delay:.75s}
+.hero.in .hero-sub{animation:fadeUp .8s var(--ease-out-expo) .85s forwards}
+.hero.in .hero-actions{animation:fadeUp .8s var(--ease-out-expo) 1s forwards}
+.scroll-cue{
+  position:absolute;right:var(--pad);bottom:clamp(2rem,5vw,3rem);z-index:2;
+  color:rgba(255,255,255,.75);display:flex;flex-direction:column;align-items:center;gap:.6rem;
+  font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;writing-mode:vertical-rl;
+  opacity:0;animation:fadeUp 1s 1.3s forwards;
+}
+.scroll-cue .line{width:1px;height:46px;background:rgba(255,255,255,.4);position:relative;overflow:hidden}
+.scroll-cue .line::after{content:"";position:absolute;top:-50%;left:0;width:100%;height:50%;background:var(--aqua);animation:cue 1.8s var(--ease-soft) infinite}
+@keyframes cue{0%{top:-50%}100%{top:100%}}
+
+/* ---------- MARQUEE ---------- */
+.marquee{
+  background:var(--ink);color:#fff;overflow:hidden;
+  padding:.95rem 0;white-space:nowrap;position:relative;
+}
+.marquee-track{display:inline-flex;gap:0;animation:march 32s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{
+  font-family:var(--display);font-size:1.08rem;font-style:italic;
+  padding:0 1.8rem;display:inline-flex;align-items:center;gap:1.8rem;color:rgba(255,255,255,.92)
+}
+.marquee-track span::after{content:"✦";color:var(--aqua);font-style:normal;font-size:.8rem}
+@keyframes march{to{transform:translateX(-50%)}}
+
+/* ---------- SECTIONS ---------- */
+section{position:relative}
+.wrap{max-width:var(--container);margin:0 auto;padding:clamp(4.5rem,9vw,8rem) var(--pad)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  color:var(--teal);font-size:.72rem;font-weight:700;
+  letter-spacing:.26em;text-transform:uppercase;margin-bottom:1.1rem;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--aqua)}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(2rem,5vw,3.5rem);line-height:1.05;letter-spacing:-.015em;color:var(--ink)}
+h2 em{font-style:italic;color:var(--teal)}
+.lead{font-size:clamp(1.02rem,1.8vw,1.18rem);color:#3c5663;max-width:54ch;font-weight:300;margin-top:1.2rem}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease-out-expo),transform .9s var(--ease-out-expo)}
+.reveal.show{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+
+/* ABOUT */
+.about{background:var(--paper)}
+.about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+.about-media{position:relative}
+.about-media .frame{
+  border-radius:8px;overflow:hidden;box-shadow:var(--shadow);position:relative;
+  aspect-ratio:4/5;
+}
+.about-media .frame img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out-expo)}
+.about-media:hover .frame img{transform:scale(1.05)}
+.about-badge{
+  position:absolute;bottom:-26px;left:-26px;z-index:3;
+  background:var(--deep);color:#fff;border-radius:8px;
+  padding:1.3rem 1.5rem;box-shadow:var(--shadow);text-align:center;
+}
+.about-badge b{font-family:var(--display);font-size:2.4rem;font-weight:400;display:block;line-height:1;color:var(--mint)}
+.about-badge small{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;opacity:.85}
+.about-deco{position:absolute;top:-22px;right:-22px;width:120px;height:120px;z-index:-1;color:var(--mint);opacity:.7}
+.about-body p{color:#3c5663;margin-bottom:1.1rem;font-weight:300}
+.about-body p:first-of-type{font-size:1.05rem;color:var(--ink)}
+.pullquote{
+  font-family:var(--display);font-style:italic;font-size:clamp(1.3rem,2.6vw,1.7rem);
+  color:var(--teal);line-height:1.3;border-left:2px solid var(--aqua);
+  padding-left:1.4rem;margin:2rem 0;
+}
+.cred-row{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:1.8rem}
+.cred{display:flex;align-items:center;gap:.7rem;font-size:.86rem;color:var(--deep);font-weight:500}
+.cred svg{width:30px;height:30px;color:var(--aqua);flex:none}
+
+/* SERVICES */
+.services{background:var(--sky)}
+.svc-head{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:end;margin-bottom:3rem}
+.acc-item{
+  border-top:1px solid var(--line);
+  transition:background .4s;
+}
+.acc-item:last-child{border-bottom:1px solid var(--line)}
+.acc-trigger{
+  width:100%;text-align:left;display:grid;grid-template-columns:auto 1fr auto;
+  gap:1.4rem;align-items:center;padding:1.8rem 0;color:var(--ink);
+}
+.acc-num{font-family:var(--display);font-size:1rem;color:var(--teal);font-style:italic;width:2.2rem}
+.acc-title{font-family:var(--display);font-size:clamp(1.25rem,2.6vw,1.85rem);font-weight:400;transition:color .3s}
+.acc-item.open .acc-title{color:var(--teal)}
+.acc-icon{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:.4s var(--ease-out-expo);flex:none}
+.acc-item.open .acc-icon{background:var(--teal);border-color:var(--teal);transform:rotate(135deg)}
+.acc-icon svg{width:15px;height:15px;color:var(--teal);transition:color .3s}
+.acc-item.open .acc-icon svg{color:#fff}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .6s var(--ease-out-expo)}
+.acc-body-inner{padding:0 0 2rem 3.6rem;max-width:62ch}
+.acc-body-inner p{color:#3c5663;font-weight:300}
+.acc-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.1rem}
+.acc-tags span{font-size:.72rem;background:#fff;border:1px solid var(--line);color:var(--deep);padding:.35rem .8rem;border-radius:30px;font-weight:500}
+
+/* SPORTS feature */
+.sports{background:var(--deep);color:#fff;overflow:hidden}
+.sports .wrap{position:relative}
+.sports-glow{position:absolute;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(43,166,173,.4),transparent 65%);top:-160px;right:-140px;filter:blur(20px);animation:pulse 6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
+.sports h2{color:#fff}
+.sports h2 em{color:var(--mint)}
+.sports .eyebrow{color:var(--mint)}
+.sports-lead{color:rgba(255,255,255,.8);max-width:60ch;margin:1.4rem 0 3rem;font-weight:300;font-size:clamp(1rem,1.8vw,1.15rem)}
+.sports-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.shield{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+  border-radius:10px;padding:2rem 1.7rem;position:relative;overflow:hidden;
+  transition:transform .5s var(--ease-out-expo),background .4s;
+}
+.shield:hover{transform:translateY(-6px);background:rgba(255,255,255,.09)}
+.shield::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--aqua);transition:width .5s var(--ease-out-expo)}
+.shield:hover::before{width:100%}
+.shield-ico{width:48px;height:48px;color:var(--mint);margin-bottom:1.2rem}
+.shield h3{font-family:var(--display);font-weight:400;font-size:1.35rem;margin-bottom:.7rem;color:#fff}
+.shield p{color:rgba(255,255,255,.72);font-size:.94rem;font-weight:300}
+
+/* PROCESS */
+.process{background:var(--paper)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;counter-reset:step}
+.proc-step{position:relative;padding-top:2.4rem}
+.proc-step::before{
+  counter-increment:step;content:"0" counter(step);
+  font-family:var(--display);font-style:italic;font-size:2.6rem;
+  color:var(--mint);position:absolute;top:-.4rem;left:0;line-height:1;
+}
+.proc-step::after{content:"";position:absolute;top:0;left:0;width:46px;height:2px;background:var(--aqua)}
+.proc-step h3{font-family:var(--display);font-weight:500;font-size:1.2rem;margin-bottom:.6rem;color:var(--ink)}
+.proc-step p{color:#3c5663;font-size:.92rem;font-weight:300}
+
+/* MAKEOVER / before-after */
+.makeover{background:var(--sky)}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.ba-stage{position:relative;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:1/1;user-select:none;touch-action:none;background:var(--ink)}
+.ba-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba-after{clip-path:inset(0 0 0 50%)}
+.ba-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;transform:translateX(-1px);z-index:4}
+.ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:#fff;box-shadow:0 6px 16px rgba(0,0,0,.3);z-index:5;display:flex;align-items:center;justify-content:center;cursor:ew-resize}
+.ba-handle svg{width:20px;height:20px;color:var(--teal)}
+.ba-tag{position:absolute;bottom:14px;z-index:6;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:rgba(12,34,48,.6);padding:.35rem .7rem;border-radius:30px;backdrop-filter:blur(4px)}
+.ba-tag.before{left:14px}.ba-tag.after{right:14px}
+.ba-thumbs{display:flex;gap:.7rem;margin-top:1.2rem;flex-wrap:wrap}
+.ba-thumb{width:64px;height:64px;border-radius:8px;overflow:hidden;border:2px solid transparent;opacity:.6;transition:.3s}
+.ba-thumb.active{border-color:var(--aqua);opacity:1}
+.ba-thumb img{width:100%;height:100%;object-fit:cover}
+
+/* GALLERY */
+.gallery{background:var(--paper)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:.9rem;margin-top:3rem}
+.gal-item{overflow:hidden;border-radius:8px;cursor:pointer;position:relative}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease-out-expo)}
+.gal-item:hover img{transform:scale(1.08)}
+.gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(15,110,125,.4));opacity:0;transition:.4s}
+.gal-item:hover::after{opacity:1}
+.gal-item.tall{grid-row:span 2}
+.gal-item.wide{grid-column:span 2}
+
+/* lightbox */
+.lightbox{position:fixed;inset:0;z-index:1100;background:rgba(8,24,34,.92);display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;visibility:hidden;transition:.4s}
+.lightbox.on{opacity:1;visibility:visible}
+.lightbox img{max-width:92vw;max-height:88vh;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.lb-close{position:absolute;top:1.5rem;right:1.5rem;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.lb-close:hover{background:var(--aqua)}
+
+/* TESTIMONIALS */
+.reviews{background:var(--deep);color:#fff;overflow:hidden}
+.rev-top{display:grid;grid-template-columns:1.3fr .7fr;gap:3rem;align-items:end;margin-bottom:3rem}
+.rev-top .eyebrow{color:var(--mint)}
+.reviews h2{color:#fff}.reviews h2 em{color:var(--mint)}
+.rev-stat{text-align:right}
+.rev-stat .stars{color:var(--gold);font-size:1.3rem;letter-spacing:.1em}
+.rev-stat b{font-family:var(--display);font-size:3rem;font-weight:400;display:block;color:#fff;line-height:1}
+.rev-stat small{color:rgba(255,255,255,.7);font-size:.84rem}
+.rev-cert{margin-top:1.2rem;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);max-width:260px;margin-left:auto}
+.rev-cert img{width:100%}
+.carousel{position:relative}
+.car-track{display:flex;gap:1.5rem;transition:transform .7s var(--ease-out-expo)}
+.card{
+  flex:0 0 calc((100% - 3rem)/3);
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;padding:2rem;display:flex;flex-direction:column;
+}
+.card .stars{color:var(--gold);margin-bottom:1rem;font-size:.95rem;letter-spacing:.08em}
+.card p{color:rgba(255,255,255,.82);font-weight:300;font-size:.95rem;flex:1;
+  display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;transition:.3s}
+.card.expanded p{-webkit-line-clamp:unset;overflow:visible}
+.card .more{align-self:flex-start;color:var(--mint);font-size:.8rem;font-weight:600;margin-top:.8rem;letter-spacing:.04em}
+.card .author{display:flex;align-items:center;gap:.8rem;margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.1)}
+.card .avatar{width:42px;height:42px;border-radius:50%;background:var(--aqua);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1.1rem;color:#fff;flex:none}
+.card .author b{font-weight:600;font-size:.92rem}
+.card .author small{display:block;color:rgba(255,255,255,.6);font-size:.74rem}
+.car-ctrl{display:flex;align-items:center;justify-content:space-between;margin-top:2rem;gap:1rem}
+.car-arrows{display:flex;gap:.7rem}
+.car-arrows button{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.25);color:#fff;display:flex;align-items:center;justify-content:center;transition:.3s}
+.car-arrows button:hover{background:var(--aqua);border-color:var(--aqua)}
+.car-arrows svg{width:18px;height:18px}
+.rev-link{color:var(--mint);font-weight:600;font-size:.9rem;display:inline-flex;align-items:center;gap:.5rem;transition:gap .3s}
+.rev-link:hover{gap:.8rem}
+.rev-link svg{width:16px;height:16px}
+
+/* FAQ */
+.faq{background:var(--paper)}
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;text-align:left;display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1.4rem 0;font-family:var(--display);font-size:1.15rem;font-weight:500;color:var(--ink)}
+.faq-q .pm{width:26px;height:26px;flex:none;position:relative}
+.faq-q .pm::before,.faq-q .pm::after{content:"";position:absolute;background:var(--teal);transition:.4s var(--ease-out-expo)}
+.faq-q .pm::before{top:50%;left:0;width:100%;height:2px;transform:translateY(-50%)}
+.faq-q .pm::after{left:50%;top:0;height:100%;width:2px;transform:translateX(-50%)}
+.faq-item.open .pm::after{transform:translateX(-50%) scaleY(0)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .5s var(--ease-out-expo)}
+.faq-a p{padding:0 0 1.4rem;color:#3c5663;font-weight:300;max-width:60ch}
+
+/* CONTACT */
+.contact{background:var(--ink);color:#fff;overflow:hidden}
+.contact .wrap{position:relative}
+.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,5rem)}
+.contact h2{color:#fff}.contact h2 em{color:var(--mint)}
+.contact .eyebrow{color:var(--mint)}
+.ci-list{margin-top:2rem;display:flex;flex-direction:column;gap:1.3rem}
+.ci{display:flex;gap:1rem;align-items:flex-start}
+.ci-ico{width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;flex:none;color:var(--mint)}
+.ci-ico svg{width:20px;height:20px}
+.ci b{display:block;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.2rem;font-weight:600}
+.ci a,.ci span{color:#fff;font-weight:400;font-size:1rem;line-height:1.4}
+.ci a:hover{color:var(--mint)}
+.socials{display:flex;gap:.8rem;margin-top:2rem}
+.socials a{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:#fff;transition:.3s}
+.socials a:hover{background:var(--aqua);border-color:var(--aqua);transform:translateY(-3px)}
+.socials svg{width:20px;height:20px}
+.form{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:clamp(1.6rem,3vw,2.4rem)}
+.field{margin-bottom:1.1rem}
+.field label{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.5rem;font-weight:600}
+.field input,.field textarea{
+  width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  border-radius:8px;padding:.85rem 1rem;color:#fff;font-family:inherit;font-size:.95rem;transition:.3s;
+}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--aqua);background:rgba(255,255,255,.1)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.4)}
+.field textarea{resize:vertical;min-height:110px}
+.form button{width:100%;background:var(--aqua);color:#fff;padding:1rem;border-radius:8px;font-weight:700;font-size:.95rem;transition:.3s;letter-spacing:.02em}
+.form button:hover{background:var(--mint);color:var(--deep)}
+.form-note{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:1rem;text-align:center}
+.map-wrap{margin-top:2.5rem;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.12);grid-column:1/-1}
+.map-wrap iframe{width:100%;height:340px;border:0;display:block;filter:grayscale(.3) contrast(1.05)}
+
+/* FOOTER */
+footer{background:#081822;color:rgba(255,255,255,.6);padding:3rem var(--pad) 2.5rem}
+.foot-inner{max-width:var(--container);margin:0 auto;display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;align-items:center}
+.foot-brand{display:flex;align-items:center;gap:.7rem;color:#fff}
+.foot-brand svg{width:28px;height:28px}
+.foot-brand b{font-family:var(--display);font-weight:500;font-size:1.05rem}
+.foot-links{display:flex;gap:1.5rem;font-size:.84rem}
+.foot-links a:hover{color:var(--mint)}
+.foot-credit{width:100%;border-top:1px solid rgba(255,255,255,.1);margin-top:2rem;padding-top:1.5rem;display:flex;flex-wrap:wrap;gap:.6rem;justify-content:space-between;font-size:.8rem}
+.foot-credit a{color:var(--mint);font-weight:600}
+
+/* RESPONSIVE */
+@media(max-width:980px){
+  .about-grid,.faq-grid,.cta-grid,.ba-grid,.rev-top{grid-template-columns:1fr}
+  .sports-grid,.proc-grid{grid-template-columns:1fr 1fr}
+  .card{flex:0 0 calc((100% - 1.5rem)/2)}
+  .rev-stat{text-align:left}.rev-cert{margin-left:0}
+  .gal-grid{grid-template-columns:repeat(3,1fr)}
+  .about-media{max-width:440px;margin:0 auto 2rem}
+  .map-wrap iframe{height:300px}
+}
+@media(max-width:680px){
+  .nav-links{display:none}
+  .burger{display:block}
+  .lang-toggle{display:none}
+  .sports-grid,.proc-grid,.gal-grid{grid-template-columns:1fr}
+  .card{flex:0 0 100%}
+  .svc-head{grid-template-columns:1fr}
+  .acc-body-inner{padding-left:0}
+  .acc-trigger{grid-template-columns:auto 1fr auto;gap:.8rem}
+  .gal-item.tall,.gal-item.wide{grid-row:auto;grid-column:auto}
+  .gal-grid{grid-auto-rows:230px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-mark">
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M32 10c-8 0-13 4-13 4s-3 2-3 9c0 8 3 16 6 24 2 5 5 7 7 7 3 0 3-6 6-6s3 6 6 6c2 0 5-2 7-7 3-8 6-16 6-24 0-7-3-9-3-9s-5-4-13-4c-3 0-5 1-6 1s-3-1-6-1z" stroke="#2ba6ad" stroke-width="2.5" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="loader-name" data-lang="en">George Glynos</div>
+  <div class="loader-name lang-hide" data-lang="el">Γεώργιος Γλυνός</div>
+  <div class="loader-bar"><i></i></div>
+</div>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="George Glynos Dentist home">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 10c-8 0-13 4-13 4s-3 2-3 9c0 8 3 16 6 24 2 5 5 7 7 7 3 0 3-6 6-6s3 6 6 6c2 0 5-2 7-7 3-8 6-16 6-24 0-7-3-9-3-9s-5-4-13-4c-3 0-5 1-6 1s-3-1-6-1z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+      <span class="brand-name">George Glynos<span>Dentist · Rhodes</span></span>
+    </a>
+    <nav class="nav-links">
+      <a class="lnk" href="#about" data-lang="en">About</a><a class="lnk lang-hide" href="#about" data-lang="el">Ιατρός</a>
+      <a class="lnk" href="#services" data-lang="en">Services</a><a class="lnk lang-hide" href="#services" data-lang="el">Υπηρεσίες</a>
+      <a class="lnk" href="#sports" data-lang="en">Sports</a><a class="lnk lang-hide" href="#sports" data-lang="el">Αθλητική</a>
+      <a class="lnk" href="#reviews" data-lang="en">Reviews</a><a class="lnk lang-hide" href="#reviews" data-lang="el">Κριτικές</a>
+      <a class="nav-cta" href="#contact" data-lang="en">Book a Visit</a><a class="nav-cta lang-hide" href="#contact" data-lang="el">Ραντεβού</a>
+      <div class="lang-toggle">
+        <button class="flag-btn active" data-set="en" aria-label="English">
+          <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40M60 0L0 40" stroke="#C8102E" stroke-width="4"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="12"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="7"/></svg>
+        </button>
+        <button class="flag-btn" data-set="el" aria-label="Ελληνικά">
+          <svg viewBox="0 0 54 36" xmlns="http://www.w3.org/2000/svg"><rect width="54" height="36" fill="#0D5EAF"/><g fill="#fff"><rect y="4" width="54" height="4"/><rect y="12" width="54" height="4"/><rect y="20" width="54" height="4"/><rect y="28" width="54" height="4"/></g><rect width="20" height="20" fill="#0D5EAF"/><rect x="8" width="4" height="20" fill="#fff"/><rect y="8" width="20" height="4" fill="#fff"/></svg>
+        </button>
+      </div>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- MOBILE OVERLAY -->
+<div class="overlay" id="overlay">
+  <a href="#about" data-lang="en">About</a><a class="lang-hide" href="#about" data-lang="el">Ιατρός</a>
+  <a href="#services" data-lang="en">Services</a><a class="lang-hide" href="#services" data-lang="el">Υπηρεσίες</a>
+  <a href="#sports" data-lang="en">Sports Dentistry</a><a class="lang-hide" href="#sports" data-lang="el">Αθλητική</a>
+  <a href="#makeover" data-lang="en">Smile Makeovers</a><a class="lang-hide" href="#makeover" data-lang="el">Χαμόγελο</a>
+  <a href="#reviews" data-lang="en">Reviews</a><a class="lang-hide" href="#reviews" data-lang="el">Κριτικές</a>
+  <a href="#contact" data-lang="en">Book a Visit</a><a class="lang-hide" href="#contact" data-lang="el">Ραντεβού</a>
+  <div class="overlay-flags">
+    <button class="flag-btn active" data-set="en" aria-label="English"><svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40M60 0L0 40" stroke="#C8102E" stroke-width="4"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="12"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="7"/></svg></button>
+    <button class="flag-btn" data-set="el" aria-label="Ελληνικά"><svg viewBox="0 0 54 36" xmlns="http://www.w3.org/2000/svg"><rect width="54" height="36" fill="#0D5EAF"/><g fill="#fff"><rect y="4" width="54" height="4"/><rect y="12" width="54" height="4"/><rect y="20" width="54" height="4"/><rect y="28" width="54" height="4"/></g><rect width="20" height="20" fill="#0D5EAF"/><rect x="8" width="4" height="20" fill="#fff"/><rect y="8" width="20" height="4" fill="#fff"/></svg></button>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-img">
+    <img src="https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/160242352_798174224119840_8444748194887142802_n.jpg" alt="Modern dental clinic interior of Dr. George Glynos in Rhodes" loading="eager">
+  </div>
+  <svg class="hero-arc" viewBox="0 0 900 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M40 60 Q450 360 860 60"/>
+  </svg>
+  <div class="hero-content">
+    <span class="hero-eyebrow" data-lang="en">Oral Surgeon · Rhodes, Greece</span>
+    <span class="hero-eyebrow lang-hide" data-lang="el">Χειρουργός Οδοντίατρος · Ρόδος</span>
+    <h1 data-lang="en"><span class="word">A</span> <span class="word">reason</span> <span class="word">to</span> <span class="word"><em>smile</em> again.</span></h1>
+    <h1 class="lang-hide" data-lang="el"><span class="word">Ένας</span> <span class="word">λόγος</span> <span class="word">να</span> <span class="word"><em>χαμογελάσετε</em> ξανά.</span></h1>
+    <p class="hero-sub" data-lang="en">Advanced, digital, genuinely gentle dentistry. Two clinics on the island of Rhodes, fifteen years of care, and a smile designed for you.</p>
+    <p class="hero-sub lang-hide" data-lang="el">Εξελιγμένη, ψηφιακή και πραγματικά ήπια οδοντιατρική. Δύο κλινικές στη Ρόδο, δεκαπέντε χρόνια φροντίδας και ένα χαμόγελο σχεδιασμένο για εσάς.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contact" data-lang="en">Book a Visit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-primary lang-hide" href="#contact" data-lang="el">Κλείστε Ραντεβού <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="#services" data-lang="en">Our Services</a>
+      <a class="btn btn-ghost lang-hide" href="#services" data-lang="el">Οι Υπηρεσίες</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span data-lang="en">Scroll</span><span class="lang-hide" data-lang="el">Κύλιση</span><div class="line"></div></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span data-lang="en">Aesthetic Dentistry</span><span data-lang="en">Implants</span><span data-lang="en">Smile Design</span><span data-lang="en">Endodontics</span><span data-lang="en">Sports Dentistry</span><span data-lang="en">Prosthetics</span><span data-lang="en">Paediatric Care</span><span data-lang="en">Digital Precision</span>
+    <span data-lang="en">Aesthetic Dentistry</span><span data-lang="en">Implants</span><span data-lang="en">Smile Design</span><span data-lang="en">Endodontics</span><span data-lang="en">Sports Dentistry</span><span data-lang="en">Prosthetics</span><span data-lang="en">Paediatric Care</span><span data-lang="en">Digital Precision</span>
+    <span class="lang-hide" data-lang="el">Αισθητική Οδοντιατρική</span><span class="lang-hide" data-lang="el">Εμφυτεύματα</span><span class="lang-hide" data-lang="el">Σχεδιασμός Χαμόγελου</span><span class="lang-hide" data-lang="el">Ενδοδοντία</span><span class="lang-hide" data-lang="el">Αθλητική Οδοντιατρική</span><span class="lang-hide" data-lang="el">Προσθετική</span><span class="lang-hide" data-lang="el">Παιδοδοντική</span><span class="lang-hide" data-lang="el">Ψηφιακή Ακρίβεια</span>
+    <span class="lang-hide" data-lang="el">Αισθητική Οδοντιατρική</span><span class="lang-hide" data-lang="el">Εμφυτεύματα</span><span class="lang-hide" data-lang="el">Σχεδιασμός Χαμόγελου</span><span class="lang-hide" data-lang="el">Ενδοδοντία</span><span class="lang-hide" data-lang="el">Αθλητική Οδοντιατρική</span><span class="lang-hide" data-lang="el">Προσθετική</span><span class="lang-hide" data-lang="el">Παιδοδοντική</span><span class="lang-hide" data-lang="el">Ψηφιακή Ακρίβεια</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-media reveal">
+      <svg class="about-deco" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="1" stroke-dasharray="3 4"/><circle cx="50" cy="50" r="32" stroke="currentColor" stroke-width="1"/></svg>
+      <div class="frame"><img src="https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/291609888_531197152254211_976360295904986338_n.jpg" alt="Dr. George Glynos, oral surgeon in Rhodes" loading="lazy"></div>
+      <div class="about-badge"><b>15+</b><small data-lang="en">Years of care</small><small class="lang-hide" data-lang="el">Χρόνια φροντίδας</small></div>
+    </div>
+    <div class="about-body reveal d1">
+      <span class="eyebrow" data-lang="en">The Dentist</span><span class="eyebrow lang-hide" data-lang="el">Ο Ιατρός</span>
+      <h2 data-lang="en">Dr. George Glynos</h2>
+      <h2 class="lang-hide" data-lang="el">Γεώργιος Γλυνός</h2>
+      <p data-lang="en">An Oral Surgeon running two state-of-the-art private clinics on the island of Rhodes, and a graduate of the renowned Charles University Faculty of Dentistry in Prague. With a steady path of more than fifteen years in continuous clinical practice, he has built a reputation across the island for care of the highest standard — grounded in scientific excellence and an honest relationship with every patient.</p>
+      <p class="lang-hide" data-lang="el">Ο Γεώργιος Γλυνός είναι Χειρουργός Οδοντίατρος και διατηρεί δύο υπερσύγχρονα ιδιωτικά οδοντιατρεία στο νησί της Ρόδου. Είναι απόφοιτος της Οδοντιατρικής Σχολής του φημισμένου Πανεπιστημίου του Καρόλου (Charles University) στην Πράγα. Με μια σταθερή πορεία που ξεπερνά τα 15 χρόνια συνεχούς κλινικής πράξης, έχει εδραιώσει τη φήμη του στο νησί για την παροχή οδοντιατρικής φροντίδας υψηλότατων προδιαγραφών, βασισμένης στην επιστημονική αρτιότητα και την ειλικρινή σχέση με τον ασθενή.</p>
+      <p class="pullquote" data-lang="en">“Every treatment is carried out with the greatest possible comfort, precision and speed.”</p>
+      <p class="pullquote lang-hide" data-lang="el">«Κάθε θεραπεία εκτελείται με τη μέγιστη δυνατή άνεση, ακρίβεια και ταχύτητα.»</p>
+      <p data-lang="en">His clinics are built around cutting-edge digital technology and a commitment to staying current with the latest international advances. From adults and teenagers to children up to twelve, every member of the family is welcomed with the same care — across aesthetic dentistry, prosthetics, implants and specialised sports dentistry.</p>
+      <p class="lang-hide" data-lang="el">Η φιλοσοφία των κλινικών του επικεντρώνεται στην ενσωμάτωση της ψηφιακής τεχνολογίας αιχμής, με τον ιατρό να παραμένει σταθερά ενημερωμένος με τις τελευταίες διεθνείς προόδους. Στα ιατρεία του καλύπτεται κάθε ανάγκη της σύγχρονης οικογένειας — ενήλικες, έφηβοι, αλλά και παιδιά έως 12 ετών — συνδυάζοντας Αισθητική, Προσθετική, Εμφυτεύματα και εξειδικευμένη Αθλητική Οδοντιατρική.</p>
+      <div class="cred-row">
+        <div class="cred"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span data-lang="en">Charles University, Prague</span><span class="lang-hide" data-lang="el">Πανεπιστήμιο Καρόλου, Πράγα</span></div>
+        <div class="cred"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="6"/><path d="M9 13l-2 8 5-3 5 3-2-8"/></svg><span data-lang="en">Internationally trained</span><span class="lang-hide" data-lang="el">Διεθνώς καταρτισμένος</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="svc-head">
+      <div class="reveal">
+        <span class="eyebrow" data-lang="en">What we do</span><span class="eyebrow lang-hide" data-lang="el">Τι κάνουμε</span>
+        <h2 data-lang="en">Complete care, <em>one chair.</em></h2>
+        <h2 class="lang-hide" data-lang="el">Πλήρης φροντίδα, <em>μία καρέκλα.</em></h2>
+      </div>
+      <p class="lead reveal d1" data-lang="en">From a first check-up to a full smile reconstruction — every treatment planned for your features, delivered with modern materials and digital precision.</p>
+      <p class="lead reveal d1 lang-hide" data-lang="el">Από τον πρώτο έλεγχο έως τη συνολική αποκατάσταση — κάθε θεραπεία σχεδιασμένη για τα δικά σας χαρακτηριστικά, με σύγχρονα υλικά και ψηφιακή ακρίβεια.</p>
+    </div>
+
+    <div class="accordion reveal">
+      <!-- 1 -->
+      <div class="acc-item open">
+        <button class="acc-trigger" aria-expanded="true">
+          <span class="acc-num">01</span>
+          <span class="acc-title" data-lang="en">Aesthetic Dentistry & Smile Design</span><span class="acc-title lang-hide" data-lang="el">Αισθητική & Σχεδιασμός Χαμόγελου</span>
+          <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p data-lang="en">The aesthetic upgrade of your smile is designed exclusively around your own facial features. From white fillings and safe, in-chair teeth whitening to composite (bonding) and porcelain veneers, we correct imperfections, gaps and discolourations — restoring your teeth's natural brilliance, immediately and painlessly.</p>
+            <p class="lang-hide" data-lang="el">Η αισθητική αναβάθμιση του χαμόγελου σχεδιάζεται αποκλειστικά για τα δικά σας χαρακτηριστικά προσώπου. Από τα λευκά σφραγίσματα και την ασφαλή λεύκανση στην καρέκλα, μέχρι όψεις ρητίνης (bonding) ή πορσελάνης, διορθώνουμε ατέλειες, κενά και δυσχρωμίες, αποκαθιστώντας τη φυσική λάμψη των δοντιών σας άμεσα και ανώδυνα.</p>
+            <div class="acc-tags">
+              <span data-lang="en">Whitening</span><span class="lang-hide" data-lang="el">Λεύκανση</span>
+              <span data-lang="en">Composite veneers</span><span class="lang-hide" data-lang="el">Όψεις ρητίνης</span>
+              <span data-lang="en">Porcelain veneers</span><span class="lang-hide" data-lang="el">Όψεις πορσελάνης</span>
+              <span data-lang="en">White fillings</span><span class="lang-hide" data-lang="el">Σφραγίσματα</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div class="acc-item">
+        <button class="acc-trigger" aria-expanded="false">
+          <span class="acc-num">02</span>
+          <span class="acc-title" data-lang="en">Surgery, Implants & Endodontics</span><span class="acc-title lang-hide" data-lang="el">Χειρουργική, Εμφυτεύματα & Ενδοδοντία</span>
+          <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p data-lang="en">We handle every urgent or chronic case with composure and clinical precision. Tooth loss is restored permanently with dental implants, offering complete stability and a natural feel when chewing. Alongside this, we perform painless root canal (endodontic) treatments to save damaged teeth, and extractions where keeping the tooth is no longer possible.</p>
+            <p class="lang-hide" data-lang="el">Αντιμετωπίζουμε με ψυχραιμία και κλινική ακρίβεια κάθε επείγον ή χρόνιο περιστατικό. Η απώλεια δοντιών αποκαθίσταται μόνιμα με οδοντικά εμφυτεύματα, προσφέροντας απόλυτη σταθερότητα και φυσική αίσθηση στη μάσηση. Παράλληλα, διενεργούνται ανώδυνες απονευρώσεις για τη διάσωση δοντιών, καθώς και εξαγωγές όταν η διατήρηση είναι αδύνατη.</p>
+            <div class="acc-tags">
+              <span data-lang="en">Dental implants</span><span class="lang-hide" data-lang="el">Εμφυτεύματα</span>
+              <span data-lang="en">Root canal therapy</span><span class="lang-hide" data-lang="el">Απονεύρωση</span>
+              <span data-lang="en">Extractions</span><span class="lang-hide" data-lang="el">Εξαγωγές</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div class="acc-item">
+        <button class="acc-trigger" aria-expanded="false">
+          <span class="acc-num">03</span>
+          <span class="acc-title" data-lang="en">Prosthetics & Full Restoration</span><span class="acc-title lang-hide" data-lang="el">Προσθετική & Συνολική Αποκατάσταση</span>
+          <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p data-lang="en">Loss, fracture or extensive damage to teeth is fully restored through prosthetics. We build crowns and bridges of high strength and biocompatibility that protect the remaining tooth and restore the alignment of the jaw. Every prosthetic is designed for maximum longevity and a perfect bite.</p>
+            <p class="lang-hide" data-lang="el">Η απώλεια, το κάταγμα ή η εκτεταμένη καταστροφή των δοντιών αποκαθίστανται πλήρως μέσω της Προσθετικής. Κατασκευάζουμε στεφάνες (θήκες) και γέφυρες υψηλής αντοχής και βιοσυμβατότητας, που προστατεύουν το δόντι και επαναφέρουν την ορθοστάτηση της γνάθου. Κάθε εργασία σχεδιάζεται για μέγιστη μακροβιότητα και τέλεια σύγκλειση.</p>
+            <div class="acc-tags">
+              <span data-lang="en">Crowns</span><span class="lang-hide" data-lang="el">Στεφάνες / Θήκες</span>
+              <span data-lang="en">Bridges</span><span class="lang-hide" data-lang="el">Γέφυρες</span>
+              <span data-lang="en">Zirconia</span><span class="lang-hide" data-lang="el">Ζιρκόνιο</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 4 -->
+      <div class="acc-item">
+        <button class="acc-trigger" aria-expanded="false">
+          <span class="acc-num">04</span>
+          <span class="acc-title" data-lang="en">Prevention & Paediatric Care (up to 12)</span><span class="acc-title lang-hide" data-lang="el">Πρόληψη & Παιδοδοντική (έως 12 ετών)</span>
+          <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p data-lang="en">Prevention is the foundation of oral health. We carry out detailed oral examinations and cleanings to remove tartar and plaque. Dr. Glynos is highly experienced with children up to twelve, offering a painless, friendly check-up that frees young patients from any fear of the dentist.</p>
+            <p class="lang-hide" data-lang="el">Η πρόληψη αποτελεί το θεμέλιο της στοματικής υγείας. Πραγματοποιείται λεπτομερής στοματικός έλεγχος και καθαρισμός για την αφαίρεση τρυγίας και πλάκας. Ο ιατρός διαθέτει μεγάλη εξοικείωση με παιδιά έως 12 ετών, προσφέροντας έναν ανώδυνο και φιλικό έλεγχο που απαλλάσσει τους μικρούς ασθενείς από τον φόβο.</p>
+            <div class="acc-tags">
+              <span data-lang="en">Oral check-up</span><span class="lang-hide" data-lang="el">Στοματικός έλεγχος</span>
+              <span data-lang="en">Cleaning</span><span class="lang-hide" data-lang="el">Καθαρισμός</span>
+              <span data-lang="en">Children up to 12</span><span class="lang-hide" data-lang="el">Παιδιά έως 12</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPORTS DENTISTRY -->
+<section class="sports" id="sports">
+  <div class="wrap">
+    <div class="sports-glow" aria-hidden="true"></div>
+    <span class="eyebrow reveal" data-lang="en">The athlete's shield</span><span class="eyebrow reveal lang-hide" data-lang="el">Η ασπίδα του αθλητή</span>
+    <h2 class="reveal" data-lang="en">Why your mouth <em>decides</em> your performance.</h2>
+    <h2 class="reveal lang-hide" data-lang="el">Γιατί το στόμα <em>καθορίζει</em> τις επιδόσεις σας.</h2>
+    <p class="sports-lead reveal d1" data-lang="en">In fifteen years of practice I've watched countless athletes invest in equipment, nutritionists and physios — while overlooking one decisive factor in their physical output: their mouth. Sports Dentistry is one of the most important, and most neglected, fields of athletic health.</p>
+    <p class="sports-lead reveal d1 lang-hide" data-lang="el">Στα 15 χρόνια της κλινικής μου διαδρομής έχω δει αμέτρητους αθλητές να επενδύουν σε εξοπλισμό, διατροφολόγους και φυσικοθεραπευτές, αγνοώντας έναν βασικό παράγοντα της απόδοσής τους: το στόμα τους. Η Αθλητική Οδοντιατρική είναι ένας από τους πιο σημαντικούς, αλλά συχνά παραμελημένους κλάδους της αθλητικής υγείας.</p>
+    <div class="sports-grid">
+      <div class="shield reveal">
+        <svg class="shield-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <h3 data-lang="en">The hidden brake</h3><h3 class="lang-hide" data-lang="el">Το κρυφό «φρένο»</h3>
+        <p data-lang="en">A chronic, symptom-free inflammation — neglected gum disease or a tooth needing a root canal — constantly burdens the immune system. The body spends energy fighting it, so the athlete tires sooner, picks up more muscle injuries and recovers more slowly.</p>
+        <p class="lang-hide" data-lang="el">Μια χρόνια, ασυμπτωματική φλεγμονή (μια παραμελημένη ουλίτιδα ή ένα δόντι που χρειάζεται απονεύρωση) επιβαρύνει συνεχώς το ανοσοποιητικό. Το σώμα δαπανά ενέργεια για να την πολεμήσει, με αποτέλεσμα ο αθλητής να κουράζεται πιο εύκολα και να καθυστερεί η αποκατάστασή του.</p>
+      </div>
+      <div class="shield reveal d1">
+        <svg class="shield-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M5 8c4 0 4 8 0 8M19 8c-4 0-4 8 0 8"/></svg>
+        <h3 data-lang="en">Balance starts at the jaw</h3><h3 class="lang-hide" data-lang="el">Η ισορροπία ξεκινά από τη γνάθο</h3>
+        <p data-lang="en">A poor bite or unconscious clenching under effort (bruxism) puts tremendous strain on the temporomandibular joint. That tension travels to the neck, back and spine — affecting balance, alignment and the strength of the entire body.</p>
+        <p class="lang-hide" data-lang="el">Η κακή σύγκλειση ή το ασυνείδητο σφίξιμο κατά την προσπάθεια (βρυγμός) προκαλεί τρομερή καταπόνηση στην κροταφογναθική διάρθρωση. Η ένταση μεταφέρεται στον αυχένα, την πλάτη και τη σπονδυλική στήλη, επηρεάζοντας την ισορροπία, την ευθυγράμμιση και τη δύναμη όλου του σώματος.</p>
+      </div>
+      <div class="shield reveal d2">
+        <svg class="shield-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9c0-3 3-5 6-5s6 2 6 5c0 2-1 4-2 6s-1 4-4 4-3-2-4-4-2-4-2-6z"/></svg>
+        <h3 data-lang="en">The custom mouthguard</h3><h3 class="lang-hide" data-lang="el">Ο εξατομικευμένος νάρθηκας</h3>
+        <p data-lang="en">Off-the-shelf boil-and-bite guards restrict breathing and offer little real protection. In our Rhodes clinics we craft custom mouthguards from precise impressions — a shock absorber that protects teeth and jaw from fractures, stabilises the jaw and improves breathing and oxygenation during play.</p>
+        <p class="lang-hide" data-lang="el">Οι έτοιμοι νάρθηκες του εμπορίου δυσκολεύουν την αναπνοή και δεν προσφέρουν πραγματική προστασία. Στα ιατρεία μας στη Ρόδο κατασκευάζουμε εξατομικευμένους νάρθηκες κατόπιν ακριβούς αποτύπωσης — έναν «αποσβεστήρα κραδασμών» που προστατεύει δόντια και γνάθο από κατάγματα, σταθεροποιεί τη γνάθο και βελτιώνει την αναπνοή και την οξυγόνωση κατά τον αγώνα.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="wrap">
+    <span class="eyebrow reveal" data-lang="en">How it works</span><span class="eyebrow reveal lang-hide" data-lang="el">Πώς λειτουργεί</span>
+    <h2 class="reveal" data-lang="en">Your visit, <em>step by step.</em></h2>
+    <h2 class="reveal lang-hide" data-lang="el">Η επίσκεψή σας, <em>βήμα-βήμα.</em></h2>
+    <div class="proc-grid">
+      <div class="proc-step reveal">
+        <h3 data-lang="en">Consultation</h3><h3 class="lang-hide" data-lang="el">Συνεδρία</h3>
+        <p data-lang="en">We listen, examine and explain everything clearly — no pressure, only an honest picture of your oral health.</p>
+        <p class="lang-hide" data-lang="el">Ακούμε, εξετάζουμε και εξηγούμε τα πάντα με σαφήνεια — χωρίς πίεση, μόνο μια ειλικρινής εικόνα.</p>
+      </div>
+      <div class="proc-step reveal d1">
+        <h3 data-lang="en">Digital plan</h3><h3 class="lang-hide" data-lang="el">Ψηφιακό πλάνο</h3>
+        <p data-lang="en">Using digital technology, we design a treatment shaped precisely around your features and goals.</p>
+        <p class="lang-hide" data-lang="el">Με ψηφιακή τεχνολογία σχεδιάζουμε μια θεραπεία προσαρμοσμένη ακριβώς στα χαρακτηριστικά και τους στόχους σας.</p>
+      </div>
+      <div class="proc-step reveal d2">
+        <h3 data-lang="en">Gentle treatment</h3><h3 class="lang-hide" data-lang="el">Ήπια θεραπεία</h3>
+        <p data-lang="en">Every procedure is carried out with maximum comfort, precision and speed — painlessly.</p>
+        <p class="lang-hide" data-lang="el">Κάθε θεραπεία εκτελείται με μέγιστη άνεση, ακρίβεια και ταχύτητα — ανώδυνα.</p>
+      </div>
+      <div class="proc-step reveal d3">
+        <h3 data-lang="en">Aftercare</h3><h3 class="lang-hide" data-lang="el">Παρακολούθηση</h3>
+        <p data-lang="en">We stay with you afterwards, ensuring your result lasts and your smile keeps its health and shine.</p>
+        <p class="lang-hide" data-lang="el">Παραμένουμε δίπλα σας, διασφαλίζοντας ότι το αποτέλεσμα διαρκεί και το χαμόγελό σας μένει υγιές.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAKEOVER / before-after -->
+<section class="makeover" id="makeover">
+  <div class="wrap">
+    <div class="ba-grid">
+      <div class="reveal">
+        <span class="eyebrow" data-lang="en">Smile makeovers</span><span class="eyebrow lang-hide" data-lang="el">Μεταμορφώσεις χαμόγελου</span>
+        <h2 data-lang="en">Drag to see the <em>difference.</em></h2>
+        <h2 class="lang-hide" data-lang="el">Σύρετε για να δείτε τη <em>διαφορά.</em></h2>
+        <p class="lead" data-lang="en">Real results from our clinics in Rhodes. Each makeover is planned around the patient's own face — for a smile that looks healthy, natural and entirely theirs.</p>
+        <p class="lead lang-hide" data-lang="el">Πραγματικά αποτελέσματα από τα ιατρεία μας στη Ρόδο. Κάθε μεταμόρφωση σχεδιάζεται γύρω από το πρόσωπο του ασθενούς — για ένα χαμόγελο υγιές, φυσικό και απόλυτα δικό του.</p>
+        <div class="ba-thumbs" id="baThumbs"></div>
+      </div>
+      <div class="reveal d1">
+        <div class="ba-stage" id="baStage">
+          <img class="ba-before" id="baBefore" src="" alt="Before smile makeover" loading="lazy">
+          <img class="ba-after" id="baAfter" src="" alt="After smile makeover" loading="lazy">
+          <div class="ba-tag before" data-lang="en">Before</div><div class="ba-tag before lang-hide" data-lang="el">Πριν</div>
+          <div class="ba-tag after" data-lang="en">After</div><div class="ba-tag after lang-hide" data-lang="el">Μετά</div>
+          <div class="ba-divider" id="baDivider"></div>
+          <div class="ba-handle" id="baHandle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7l-4 5 4 5M16 7l4 5-4 5"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <span class="eyebrow reveal" data-lang="en">Inside the clinics</span><span class="eyebrow reveal lang-hide" data-lang="el">Στις κλινικές</span>
+    <h2 class="reveal" data-lang="en">Two clinics, <em>one standard.</em></h2>
+    <h2 class="reveal lang-hide" data-lang="el">Δύο ιατρεία, <em>ένα επίπεδο.</em></h2>
+    <div class="gal-grid reveal d1" id="galGrid"></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="rev-top">
+      <div class="reveal">
+        <span class="eyebrow" data-lang="en">In their words</span><span class="eyebrow lang-hide" data-lang="el">Με τα λόγια τους</span>
+        <h2 data-lang="en">Trusted by <em>patients</em> & visitors alike.</h2>
+        <h2 class="lang-hide" data-lang="el">Εμπιστοσύνη από <em>ασθενείς</em> & επισκέπτες.</h2>
+      </div>
+      <div class="rev-stat reveal d1">
+        <div class="stars">★★★★★</div>
+        <b>300+</b>
+        <small data-lang="en">Five-star Google reviews</small><small class="lang-hide" data-lang="el">Πεντάστερες κριτικές Google</small>
+        <div class="rev-cert"><img src="https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/unnamed-25.jpg" alt="Awards and certifications" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="carousel reveal">
+      <div class="car-track" id="carTrack"></div>
+      <div class="car-ctrl">
+        <a class="rev-link" href="https://www.google.com/search?client=safari&hs=Vy3p&sca_esv=99fd30d500723c13&cs=1&sxsrf=ANbL-n6k6Gp3ofJb3ZD1R0D94H8U-deiLA:1781265515301&q=Glynos+George+Dentist+Reviews&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNLY0Nje0sDA2MQGyTM0tgcwNjIyvGGXdcyrz8osV3FPzi9JTFVxS80oyi0sUglLLMlPLixex4pcHAOp0mjtbAAAA&rldimm=13937188344393579883&tbm=lcl&hl=en-GR&sa=X#lkt=LocalPoiReviews" target="_blank" rel="noopener">
+          <span data-lang="en">Read all reviews on Google</span><span class="lang-hide" data-lang="el">Διαβάστε όλες τις κριτικές</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <div class="car-arrows">
+          <button id="carPrev" aria-label="Previous review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button id="carNext" aria-label="Next review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap faq-grid">
+    <div class="reveal">
+      <span class="eyebrow" data-lang="en">Good to know</span><span class="eyebrow lang-hide" data-lang="el">Καλό να ξέρετε</span>
+      <h2 data-lang="en">Questions, <em>answered.</em></h2>
+      <h2 class="lang-hide" data-lang="el">Απαντήσεις στις <em>ερωτήσεις σας.</em></h2>
+      <p class="lead" data-lang="en">Visiting Rhodes or living here — here's what patients ask most.</p>
+      <p class="lead lang-hide" data-lang="el">Είτε επισκέπτεστε τη Ρόδο είτε μένετε εδώ — να τι ρωτούν συχνότερα οι ασθενείς.</p>
+    </div>
+    <div class="faq-list reveal d1">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-lang="en">Do you accept emergency and same-day appointments?</span><span class="lang-hide" data-lang="el">Δέχεστε επείγοντα και αυθημερόν ραντεβού;</span><span class="pm"></span></button>
+        <div class="faq-a"><p data-lang="en">Yes. Urgent cases — broken fillings, sudden pain, holiday emergencies — are handled with priority, often the same day. Just call us and we'll find the soonest slot.</p><p class="lang-hide" data-lang="el">Ναι. Τα επείγοντα — σπασμένα σφραγίσματα, ξαφνικός πόνος, περιστατικά διακοπών — αντιμετωπίζονται κατά προτεραιότητα, συχνά την ίδια μέρα. Καλέστε μας και θα βρούμε το συντομότερο ραντεβού.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-lang="en">Do you treat visitors and tourists?</span><span class="lang-hide" data-lang="el">Δέχεστε επισκέπτες και τουρίστες;</span><span class="pm"></span></button>
+        <div class="faq-a"><p data-lang="en">Absolutely. Many of our patients are visitors to Rhodes. We provide clear documentation, x-rays and prescriptions you can take to your dentist back home.</p><p class="lang-hide" data-lang="el">Φυσικά. Πολλοί ασθενείς μας είναι επισκέπτες της Ρόδου. Παρέχουμε σαφή έγγραφα, ακτινογραφίες και συνταγές που μπορείτε να πάρετε στον οδοντίατρό σας.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-lang="en">Up to what age do you see children?</span><span class="lang-hide" data-lang="el">Έως ποια ηλικία δέχεστε παιδιά;</span><span class="pm"></span></button>
+        <div class="faq-a"><p data-lang="en">We welcome children up to twelve years old, with a gentle, friendly approach designed to keep young patients calm and free of any fear of the dentist.</p><p class="lang-hide" data-lang="el">Δεχόμαστε παιδιά έως 12 ετών, με μια ήπια και φιλική προσέγγιση που κρατά τους μικρούς ασθενείς ήρεμους και χωρίς φόβο.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-lang="en">Where are your two clinics located?</span><span class="lang-hide" data-lang="el">Πού βρίσκονται τα δύο ιατρεία;</span><span class="pm"></span></button>
+        <div class="faq-a"><p data-lang="en">One is in Rhodes Town at Akti Miaouli 8, and the other in Lardos, both in the Dodecanese. Contact us and we'll arrange your visit at the most convenient location.</p><p class="lang-hide" data-lang="el">Το ένα βρίσκεται στη Ρόδο, Ακτή Μιαούλη 8, και το άλλο στον Λάρδο, στα Δωδεκάνησα. Επικοινωνήστε μαζί μας για το πιο βολικό ιατρείο.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span data-lang="en">Can I get aesthetic work, like veneers, done while on holiday?</span><span class="lang-hide" data-lang="el">Μπορώ να κάνω αισθητική εργασία στις διακοπές μου;</span><span class="pm"></span></button>
+        <div class="faq-a"><p data-lang="en">Yes — many visitors combine a smile makeover with their trip to Rhodes. Get in touch beforehand and we'll plan the treatment to fit your stay.</p><p class="lang-hide" data-lang="el">Ναι — πολλοί επισκέπτες συνδυάζουν μια μεταμόρφωση χαμόγελου με το ταξίδι τους. Επικοινωνήστε εκ των προτέρων και θα προγραμματίσουμε τη θεραπεία ανάλογα με τη διαμονή σας.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="cta-grid">
+      <div class="reveal">
+        <span class="eyebrow" data-lang="en">Book a visit</span><span class="eyebrow lang-hide" data-lang="el">Κλείστε ραντεβού</span>
+        <h2 data-lang="en">Let's give you a reason to <em>smile.</em></h2>
+        <h2 class="lang-hide" data-lang="el">Ας σας δώσουμε έναν λόγο να <em>χαμογελάσετε.</em></h2>
+        <div class="ci-list">
+          <div class="ci"><div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><b data-lang="en">Rhodes Town</b><b class="lang-hide" data-lang="el">Ρόδος</b><span data-lang="en">Akti Miaouli 8, Rhodes, Dodecanese</span><span class="lang-hide" data-lang="el">Ακτή Μιαούλη 8, Ρόδος, Δωδεκάνησα</span></div></div>
+          <div class="ci"><div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><b data-lang="en">Lardos</b><b class="lang-hide" data-lang="el">Λάρδος</b><span data-lang="en">Lardos, Rhodes, Dodecanese</span><span class="lang-hide" data-lang="el">Λάρδος, Ρόδος, Δωδεκάνησα</span></div></div>
+          <div class="ci"><div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 1.9.6 2.8a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.5 2.8.6a2 2 0 011.7 2z"/></svg></div><div><b data-lang="en">Phone</b><b class="lang-hide" data-lang="el">Τηλέφωνο</b><a href="tel:+302241037600">+30 2241 037600</a></div></div>
+          <div class="ci"><div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg></div><div><b data-lang="en">Email</b><b class="lang-hide" data-lang="el">Email</b><a href="mailto:glynosgiorgos@gmail.com">glynosgiorgos@gmail.com</a></div></div>
+        </div>
+        <div class="socials">
+          <a href="https://www.facebook.com/DrMagicTooth/?locale=el_GR" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.5-3.5H14V3.8c0-1 .3-1.6 1.7-1.6H18V-.6C17.6-.7 16.4-.8 15-.8c-3 0-5 1.8-5 5.2V5.5H7V9h3v12h4z" transform="translate(0 1)"/></svg></a>
+        </div>
+      </div>
+
+      <div class="reveal d1">
+        <form class="form" action="https://formspree.io/f/movlkgzl" method="POST">
+          <div class="field"><label for="name" data-lang="en">Name</label><label for="name" class="lang-hide" data-lang="el">Όνομα</label><input id="name" name="name" type="text" required placeholder="Your name"></div>
+          <div class="field"><label for="email" data-lang="en">Email</label><label for="email" class="lang-hide" data-lang="el">Email</label><input id="email" name="email" type="email" required placeholder="you@email.com"></div>
+          <div class="field"><label for="phone" data-lang="en">Phone</label><label for="phone" class="lang-hide" data-lang="el">Τηλέφωνο</label><input id="phone" name="phone" type="tel" placeholder="+30 ..."></div>
+          <div class="field"><label for="msg" data-lang="en">How can we help?</label><label for="msg" class="lang-hide" data-lang="el">Πώς μπορούμε να βοηθήσουμε;</label><textarea id="msg" name="message" required placeholder="Tell us a little about what you need"></textarea></div>
+          <button type="submit" data-lang="en">Request Appointment</button><button type="submit" class="lang-hide" data-lang="el" style="display:none">Αίτημα Ραντεβού</button>
+          <p class="form-note" data-lang="en">We'll get back to you as soon as possible.</p><p class="form-note lang-hide" data-lang="el">Θα επικοινωνήσουμε μαζί σας το συντομότερο.</p>
+        </form>
+      </div>
+
+      <div class="map-wrap reveal">
+        <iframe title="Clinic location in Rhodes" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Akti+Miaouli+8,+Rhodes,+Greece&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <a href="#top" class="foot-brand">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 10c-8 0-13 4-13 4s-3 2-3 9c0 8 3 16 6 24 2 5 5 7 7 7 3 0 3-6 6-6s3 6 6 6c2 0 5-2 7-7 3-8 6-16 6-24 0-7-3-9-3-9s-5-4-13-4c-3 0-5 1-6 1s-3-1-6-1z" stroke="#2ba6ad" stroke-width="2.5" stroke-linejoin="round"/></svg>
+      <b>George Glynos<span style="display:block;font-family:'Manrope';font-size:.6rem;letter-spacing:.3em;opacity:.6;text-transform:uppercase;margin-top:.2rem">Dentist · Rhodes</span></b>
+    </a>
+    <nav class="foot-links">
+      <a href="#about" data-lang="en">About</a><a class="lang-hide" href="#about" data-lang="el">Ιατρός</a>
+      <a href="#services" data-lang="en">Services</a><a class="lang-hide" href="#services" data-lang="el">Υπηρεσίες</a>
+      <a href="#reviews" data-lang="en">Reviews</a><a class="lang-hide" href="#reviews" data-lang="el">Κριτικές</a>
+      <a href="#contact" data-lang="en">Contact</a><a class="lang-hide" href="#contact" data-lang="el">Επικοινωνία</a>
+      <a href="https://www.facebook.com/DrMagicTooth/?locale=el_GR" target="_blank" rel="noopener">Facebook</a>
+    </nav>
+  </div>
+  <div class="foot-credit">
+    <span>© <span id="year"></span> George Glynos Dentist. <span data-lang="en">All rights reserved.</span><span class="lang-hide" data-lang="el">Με επιφύλαξη παντός δικαιώματος.</span></span>
+    <span>Designed by <a href="https://www.advonmedia.com" target="_blank" rel="noopener">Advon Media</a></span>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox"><button class="lb-close" aria-label="Close">×</button><img src="" alt="Enlarged clinic photo"></div>
+
+<script>
+(function(){
+  "use strict";
+  const $=(s,c=document)=>c.querySelector(s);
+  const $$=(s,c=document)=>[...c.querySelectorAll(s)];
+
+  /* loader */
+  window.addEventListener('load',()=>{
+    setTimeout(()=>{$('#loader').classList.add('done');$('#hero').classList.add('in');},1300);
+  });
+
+  /* nav scroll */
+  const header=$('#header');
+  const onScroll=()=>{header.classList.toggle('scrolled',window.scrollY>40);};
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  /* mobile menu */
+  const burger=$('#burger'),overlay=$('#overlay');
+  const toggleMenu=()=>document.body.classList.toggle('menu-open');
+  burger.addEventListener('click',toggleMenu);
+  $$('a',overlay).forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('menu-open')));
+
+  /* language */
+  function setLang(l){
+    document.documentElement.lang=l;
+    $$('[data-lang]').forEach(el=>{
+      el.classList.toggle('lang-hide',el.dataset.lang!==l);
+    });
+    $$('.flag-btn').forEach(b=>b.classList.toggle('active',b.dataset.set===l));
+  }
+  $$('.flag-btn').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.set)));
+  setLang('en');
+
+  /* reveal */
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  $$('.reveal').forEach(el=>io.observe(el));
+
+  /* services accordion */
+  $$('.acc-item').forEach(item=>{
+    const trig=$('.acc-trigger',item),body=$('.acc-body',item);
+    const setH=()=>{body.style.maxHeight=item.classList.contains('open')?body.scrollHeight+'px':'0px';};
+    if(item.classList.contains('open'))setH();
+    trig.addEventListener('click',()=>{
+      const open=item.classList.contains('open');
+      $$('.acc-item').forEach(o=>{o.classList.remove('open');$('.acc-trigger',o).setAttribute('aria-expanded','false');$('.acc-body',o).style.maxHeight='0px';});
+      if(!open){item.classList.add('open');trig.setAttribute('aria-expanded','true');body.style.maxHeight=body.scrollHeight+'px';}
+    });
+  });
+
+  /* faq accordion */
+  $$('.faq-item').forEach(item=>{
+    const q=$('.faq-q',item),a=$('.faq-a',item);
+    q.addEventListener('click',()=>{
+      const open=item.classList.contains('open');
+      item.classList.toggle('open',!open);
+      q.setAttribute('aria-expanded',String(!open));
+      a.style.maxHeight=!open?a.scrollHeight+'px':'0px';
+    });
+  });
+
+  /* before / after */
+  const baPairs=[
+    {b:"https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/120653676_702112180392712_996951416644034592_n.png.jpeg"},
+    {b:"https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/123111721_717848005485796_6768564423436072533_n.png.jpeg"},
+    {b:"https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/123848447_724377381499525_3809728171707895309_n.png.jpeg"},
+    {b:"https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/126516232_734872433783353_9016621532355706689_n.png.jpeg"},
+    {b:"https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/127710056_738920823378514_8834453535916052737_n.png.jpeg"}
+  ];
+  const baBefore=$('#baBefore'),baAfter=$('#baAfter'),baThumbs=$('#baThumbs');
+  function loadPair(i){
+    // each source image already contains the before/after composite; show same image both sides for the slider reveal effect
+    baBefore.src=baPairs[i].b;baAfter.src=baPairs[i].b;
+    $$('.ba-thumb',baThumbs).forEach((t,k)=>t.classList.toggle('active',k===i));
+  }
+  baPairs.forEach((p,i)=>{
+    const t=document.createElement('button');t.className='ba-thumb'+(i===0?' active':'');t.setAttribute('aria-label','Makeover '+(i+1));
+    const im=document.createElement('img');im.src=p.b;im.loading='lazy';im.alt='Smile makeover example '+(i+1);
+    t.appendChild(im);t.addEventListener('click',()=>loadPair(i));baThumbs.appendChild(t);
+  });
+  loadPair(0);
+
+  /* slider drag */
+  const stage=$('#baStage'),divider=$('#baDivider'),handle=$('#baHandle');
+  let dragging=false;
+  function setPos(x){
+    const r=stage.getBoundingClientRect();
+    let p=((x-r.left)/r.width)*100;p=Math.max(2,Math.min(98,p));
+    baAfter.style.clipPath='inset(0 0 0 '+p+'%)';
+    divider.style.left=p+'%';handle.style.left=p+'%';
+  }
+  const start=()=>dragging=true;
+  const end=()=>dragging=false;
+  const move=e=>{if(!dragging)return;const x=e.touches?e.touches[0].clientX:e.clientX;setPos(x);};
+  handle.addEventListener('mousedown',start);
+  stage.addEventListener('mousedown',e=>{start();setPos(e.clientX);});
+  window.addEventListener('mouseup',end);
+  window.addEventListener('mousemove',move);
+  handle.addEventListener('touchstart',start,{passive:true});
+  stage.addEventListener('touchstart',e=>{start();setPos(e.touches[0].clientX);},{passive:true});
+  window.addEventListener('touchend',end);
+  window.addEventListener('touchmove',move,{passive:true});
+
+  /* gallery */
+  const galImgs=[
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/160242352_798174224119840_8444748194887142802_n.jpg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/unnamed-20.jpg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/unnamed-21.jpg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/unnamed-22.jpg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/unnamed-23.jpg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/unnamed-24.jpg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/unnamed-26.jpg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/unnamed-27.jpg"
+  ];
+  const galGrid=$('#galGrid');
+  const spans=['wide','','tall','','','wide','','tall'];
+  galImgs.forEach((src,i)=>{
+    const d=document.createElement('div');d.className='gal-item '+spans[i%spans.length];
+    const im=document.createElement('img');im.src=src;im.loading='lazy';im.alt='Inside the dental clinic in Rhodes, photo '+(i+1);
+    d.appendChild(im);
+    d.addEventListener('click',()=>openLB(src));
+    galGrid.appendChild(d);
+  });
+
+  /* lightbox */
+  const lb=$('#lightbox'),lbImg=$('img',lb);
+  function openLB(src){lbImg.src=src;lb.classList.add('on');}
+  $('.lb-close',lb).addEventListener('click',()=>lb.classList.remove('on'));
+  lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('on');});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on');});
+
+  /* testimonials */
+  const reviews=[
+    {n:"Arkadiusz Wietchy",en:"It was the best dentist visit of my life! Shortly after arriving in Rhodes my tooth started hurting terribly. Unfortunately it was in such bad condition that surgery was necessary to remove it. George handled everything with real skill and care — I couldn't recommend him more highly.",el:"Ήταν η καλύτερη επίσκεψη σε οδοντίατρο στη ζωή μου! Λίγο μετά την άφιξή μου στη Ρόδο, το δόντι μου άρχισε να πονάει τρομερά. Δυστυχώς ήταν σε τόσο κακή κατάσταση που χρειάστηκε χειρουργική εξαγωγή. Ο Γιώργος τα χειρίστηκε όλα με πραγματική δεξιοτεχνία και φροντίδα."},
+    {n:"Ayse Ozdemir",en:"I honestly couldn't be happier with the experience. From the moment I walked in he was incredibly friendly and welcoming, which immediately put me at ease. What stood out was how honest and genuine he was — he explained everything clearly, without any pressure. It's rare to find someone so professional yet so approachable. I'll definitely be returning!",el:"Ειλικρινά δεν θα μπορούσα να είμαι πιο ευχαριστημένη. Από τη στιγμή που μπήκα ήταν απίστευτα φιλικός και με έκανε αμέσως να νιώσω άνετα. Αυτό που ξεχώρισε ήταν πόσο ειλικρινής ήταν — εξήγησε τα πάντα καθαρά, χωρίς καμία πίεση. Σπάνια βρίσκεις κάποιον τόσο επαγγελματία και ταυτόχρονα τόσο προσιτό. Σίγουρα θα ξαναέρθω!"},
+    {n:"Peter TheRock",en:"In my opinion George is the best dentist on the island. I say this because of his approach, attitude and professionalism. He is very capable, methodical and highly trained, always addressing actions with thoughtfulness. His nurse Sophia is very kind and attentive too, with expert knowledge. I wish them all the best.",el:"Κατά τη γνώμη μου ο Γιώργος είναι ο καλύτερος οδοντίατρος στο νησί. Το λέω λόγω της προσέγγισης, της στάσης και του επαγγελματισμού του. Είναι πολύ ικανός, μεθοδικός και άρτια καταρτισμένος. Η νοσηλεύτριά του Σοφία είναι επίσης πολύ ευγενική και προσεκτική. Τους εύχομαι ό,τι καλύτερο."},
+    {n:"Andy Brian",en:"I had a filling break while on holiday in Rhodes and was extremely pleased to get a same-day appointment and have it replaced with a perfect new one by the end of the day! Dr George was friendly, very professional and made what could have been a stressful situation seem not bad at all. Highly recommend for anyone in Rhodes.",el:"Έσπασε ένα σφράγισμα ενώ ήμουν σε διακοπές στη Ρόδο και χάρηκα πάρα πολύ που βρήκα αυθημερόν ραντεβού και το αντικατέστησα με ένα τέλειο καινούργιο μέχρι το τέλος της ημέρας! Ο Δρ Γιώργος ήταν φιλικός, πολύ επαγγελματίας και έκανε μια αγχωτική κατάσταση να φαίνεται καθόλου άσχημη. Τον συνιστώ ανεπιφύλακτα."},
+    {n:"Els Rooijmans",en:"Second visit, the first one was three years ago. Great experience. Giorgos is a very kind, capable dentist. Thank you for helping me so quickly and kindly!",el:"Δεύτερη επίσκεψη, η πρώτη ήταν πριν τρία χρόνια. Υπέροχη εμπειρία. Ο Γιώργος είναι ένας πολύ ευγενικός, ικανός οδοντίατρος. Ευχαριστώ που με βοηθήσατε τόσο γρήγορα και ευγενικά!"},
+    {n:"Vicki Pipakis",en:"Highly recommend this team! The dentist has the most gentle way of administering anaesthesia — I didn't feel a thing! I was an emergency patient and was looked after so well. Don't look any further, don't hesitate. If you need dental treatment, go see Dr George and his team.",el:"Συνιστώ ανεπιφύλακτα αυτή την ομάδα! Ο οδοντίατρος έχει τον πιο ήπιο τρόπο χορήγησης αναισθησίας — δεν ένιωσα τίποτα! Ήμουν επείγον περιστατικό και με φρόντισαν υπέροχα. Μην ψάχνετε άλλο, μη διστάσετε. Αν χρειάζεστε οδοντιατρική φροντίδα, πηγαίνετε στον Δρ Γιώργο."},
+    {n:"Anna Mielczarek",en:"The doctor saw me a few hours after I called with an emergency. He was very friendly and professional, and careful in diagnosing the source of pain — which didn't even come from the tooth I thought it did. He was meticulous in his work and I'm very grateful.",el:"Ο γιατρός με δέχτηκε λίγες ώρες αφότου κάλεσα για ένα επείγον. Ήταν πολύ φιλικός και επαγγελματίας, και προσεκτικός στη διάγνωση της πηγής του πόνου — που δεν προερχόταν καν από το δόντι που νόμιζα. Ήταν σχολαστικός στη δουλειά του και του είμαι ευγνώμων."},
+    {n:"Neil",en:"Brilliant, professional and friendly service. George accommodated my wife and me very helpfully between the Rhodes Town and Lardos surgeries during our two-week vacation. The equipment was state of the art, and he kindly arranged a last-minute endodontist appointment and a replacement crown prepared over a weekend. Nothing was too much.",el:"Εξαιρετική, επαγγελματική και φιλική εξυπηρέτηση. Ο Γιώργος εξυπηρέτησε εμένα και τη σύζυγό μου ανάμεσα στα ιατρεία της Ρόδου και του Λάρδου κατά τις διακοπές μας. Ο εξοπλισμός ήταν τελευταίας τεχνολογίας και κανόνισε ευγενικά ραντεβού και μια καινούργια στεφάνη μέσα σε ένα σαββατοκύριακο. Τίποτα δεν ήταν υπερβολικό."},
+    {n:"Lawrence Page",en:"I contacted George about a very painful root canal issue while on holiday in Rhodes. He fitted me in the same day and two hours later I was in the chair getting it resolved. He did an amazing job and now I'm pain free. Aftercare has also been brilliant — can't thank him enough.",el:"Επικοινώνησα με τον Γιώργο για ένα πολύ επώδυνο πρόβλημα ενώ ήμουν διακοπές στη Ρόδο. Με δέχτηκε την ίδια μέρα και δύο ώρες αργότερα ήμουν στην καρέκλα. Έκανε καταπληκτική δουλειά και τώρα δεν πονάω καθόλου. Η μετέπειτα φροντίδα ήταν επίσης άριστη."},
+    {n:"Emma Critchlow",en:"I needed an appointment in an emergency and I was seen within an hour. Very kind dentist, lovely clinic. Highly recommend.",el:"Χρειαζόμουν επειγόντως ραντεβού και με δέχτηκαν μέσα σε μία ώρα. Πολύ ευγενικός οδοντίατρος, υπέροχη κλινική. Το συνιστώ ανεπιφύλακτα."},
+    {n:"Melissa Evangelidi",en:"Dr George is our family dentist and he is an exceptional practitioner. Both he and his assistant Olga are incredibly welcoming and professional; the surgery is spotless and has state-of-the-art equipment. I've had two root canals done comfortably and reasonably priced, and I'm now planning aesthetic work with the latest zirconia veneers. Highly recommended.",el:"Ο Δρ Γιώργος είναι ο οικογενειακός μας οδοντίατρος και είναι ένας εξαιρετικός επαγγελματίας. Τόσο ο ίδιος όσο και η βοηθός του Όλγα είναι απίστευτα φιλόξενοι· το ιατρείο είναι άψογο με εξοπλισμό τελευταίας τεχνολογίας. Έκανα δύο απονευρώσεις άνετα και σε λογική τιμή και τώρα σχεδιάζω αισθητική εργασία με όψεις ζιρκονίου. Το συνιστώ ανεπιφύλακτα."},
+    {n:"Ron Feijt",en:"My toothache started getting painful while on vacation in Rhodes. I searched online and found great reviews for George — and they were correct. He was very friendly, patient and knowledgeable, and my toothache was gone within ten minutes. A correct bill, a statement for my dentist at home and a prescription completed the visit. Super!",el:"Ο πονόδοντός μου άρχισε να γίνεται επώδυνος στις διακοπές μου στη Ρόδο. Έψαξα online και βρήκα εξαιρετικές κριτικές για τον Γιώργο — και ήταν σωστές. Ήταν πολύ φιλικός, υπομονετικός και γνώστης, και ο πόνος μου έφυγε μέσα σε δέκα λεπτά. Ένας σωστός λογαριασμός και μια συνταγή ολοκλήρωσαν την επίσκεψη. Φανταστικός!"}
+  ];
+  const track=$('#carTrack');
+  const moreEn="Read more",moreEl="Διαβάστε περισσότερα";
+  reviews.forEach(r=>{
+    const c=document.createElement('article');c.className='card';
+    const initial=r.n.trim()[0];
+    c.innerHTML=`<div class="stars">★★★★★</div>
+      <p data-lang="en">${r.en}</p><p class="lang-hide" data-lang="el">${r.el}</p>
+      <button class="more" data-lang="en">${moreEn}</button><button class="more lang-hide" data-lang="el">${moreEl}</button>
+      <div class="author"><span class="avatar">${initial}</span><div><b>${r.n}</b><small data-lang="en">Google Review</small><small class="lang-hide" data-lang="el">Κριτική Google</small></div></div>`;
+    $$('.more',c).forEach(btn=>btn.addEventListener('click',()=>c.classList.toggle('expanded')));
+    track.appendChild(c);
+  });
+  setLang('en');
+
+  let idx=0;
+  function perView(){return window.innerWidth<=680?1:window.innerWidth<=980?2:3;}
+  function maxIdx(){return Math.max(0,reviews.length-perView());}
+  function goCar(){
+    const card=track.children[0];if(!card)return;
+    const gap=24;const w=card.getBoundingClientRect().width+gap;
+    idx=Math.min(idx,maxIdx());
+    track.style.transform=`translateX(${-idx*w}px)`;
+  }
+  $('#carNext').addEventListener('click',()=>{idx=idx>=maxIdx()?0:idx+1;goCar();});
+  $('#carPrev').addEventListener('click',()=>{idx=idx<=0?maxIdx():idx-1;goCar();});
+  let auto=setInterval(()=>{idx=idx>=maxIdx()?0:idx+1;goCar();},6000);
+  track.addEventListener('mouseenter',()=>clearInterval(auto));
+  track.addEventListener('mouseleave',()=>auto=setInterval(()=>{idx=idx>=maxIdx()?0:idx+1;goCar();},6000));
+  window.addEventListener('resize',goCar);
+
+  /* year */
+  $('#year').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
