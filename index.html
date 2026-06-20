@@ -196,14 +196,24 @@ body.menu-open .overlay-flags{opacity:1}
     linear-gradient(180deg,rgba(8,24,34,.6) 0%,rgba(8,24,34,.2) 40%,rgba(8,24,34,.7) 80%,rgba(8,24,34,.98) 100%),
     radial-gradient(120% 80% at 80% 20%,rgba(43,166,173,.35),transparent 60%);
 }
+.hero-arc{
+  position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);
+  width:min(95vw,1100px);height:auto;z-index:1;pointer-events:none;
+  opacity:0; filter: drop-shadow(var(--aqua-glow));
+}
+.hero-arc path{stroke:var(--aqua);stroke-width:2.5;fill:none;
+  stroke-dasharray:1400;stroke-dashoffset:1400;}
+.hero.in .hero-arc{opacity:1;transition:opacity 1s 1s}
+.hero.in .hero-arc path{animation:draw 3s var(--ease-out-expo) 1s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
 .hero-content{position:relative;z-index:2;max-width:var(--container);margin:0 auto;width:100%}
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:.8rem;
-  color:#ffffff;font-size:clamp(1.2rem, 3vw, 1.6rem);font-weight:800;
-  letter-spacing:.1em;text-transform:uppercase;margin-bottom:2rem;
-  opacity:0;transform:translateY(30px); 
-  text-shadow: 0 0 15px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.5), 0 4px 10px rgba(0,0,0,0.8);
+  color:var(--aqua);font-size:1rem;font-weight:700;
+  letter-spacing:.3em;text-transform:uppercase;margin-bottom:2rem;
+  opacity:0;transform:translateY(30px); text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
+.hero-eyebrow::before{content:"";width:50px;height:2px;background:var(--aqua); box-shadow: var(--aqua-glow);}
 .hero h1{
   font-family:var(--display);color:#fff;font-weight:400;
   font-size:clamp(4rem,10vw,8.5rem);line-height:0.95;letter-spacing:-.03em;
@@ -544,7 +554,7 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
 .foot-brand{display:flex;align-items:center;gap:1rem;color:#fff}
 .foot-brand svg{width:36px;height:36px; filter: drop-shadow(var(--aqua-glow));}
 .foot-brand b{font-family:var(--display);font-weight:500;font-size:1.3rem}
-.foot-links{display:flex;flex-wrap:wrap;gap:2rem;font-size:.95rem; font-weight: 600;}
+.foot-links{display:flex;gap:2rem;font-size:.95rem; font-weight: 600;}
 .foot-links a:hover{color:var(--aqua); text-shadow: var(--aqua-glow);}
 .foot-credit{width:100%;border-top:1px solid rgba(255,255,255,.05);margin-top:3rem;padding-top:2rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;font-size:.9rem}
 .foot-credit a{color:var(--aqua);font-weight:700}
@@ -568,10 +578,6 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
   .svc-head{grid-template-columns:1fr}
   .acc-body-inner{padding-left:0}
   .acc-trigger{grid-template-columns:auto 1fr auto;gap:1rem}
-  .foot-inner { flex-direction: column; text-align: center; justify-content: center; }
-  .foot-brand { justify-content: center; }
-  .foot-links { justify-content: center; gap: 1.2rem; }
-  .foot-credit { text-align: center; justify-content: center; }
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
@@ -599,10 +605,10 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
       <span class="brand-name">George Glynos<span>Dentist · Rhodes</span></span>
     </a>
     <nav class="nav-links">
-      <a class="lnk" href="#about" data-lang="en">About</a><a class="lnk lang-hide" href="#about" data-lang="el">Οδοντίατρος</a>
+      <a class="lnk" href="#about" data-lang="en">About</a><a class="lnk lang-hide" href="#about" data-lang="el">Ιατρός</a>
       <a class="lnk" href="#services" data-lang="en">Services</a><a class="lnk lang-hide" href="#services" data-lang="el">Υπηρεσίες</a>
-      <a class="lnk" href="#gallery" data-lang="en">Space</a><a class="lnk lang-hide" href="#gallery" data-lang="el">Χώρος</a>
-      <a class="lnk" href="#reviews" data-lang="en">Reviews</a><a class="lnk lang-hide" href="#reviews" data-lang="el">Αξιολογήσεις</a>
+      <a class="lnk" href="#sports" data-lang="en">Sports</a><a class="lnk lang-hide" href="#sports" data-lang="el">Αθλητική</a>
+      <a class="lnk" href="#reviews" data-lang="en">Reviews</a><a class="lnk lang-hide" href="#reviews" data-lang="el">Κριτικές</a>
       <a class="nav-cta" href="#contact" data-lang="en">Book a Visit</a><a class="nav-cta lang-hide" href="#contact" data-lang="el">Ραντεβού</a>
       <div class="lang-toggle">
         <button class="flag-btn active" data-set="en" aria-label="English">
@@ -618,11 +624,11 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
 </header>
 
 <div class="overlay" id="overlay">
-  <a href="#about" data-lang="en">About</a><a class="lang-hide" href="#about" data-lang="el">Οδοντίατρος</a>
+  <a href="#about" data-lang="en">About</a><a class="lang-hide" href="#about" data-lang="el">Ιατρός</a>
   <a href="#services" data-lang="en">Services</a><a class="lang-hide" href="#services" data-lang="el">Υπηρεσίες</a>
+  <a href="#sports" data-lang="en">Sports Dentistry</a><a class="lang-hide" href="#sports" data-lang="el">Αθλητική</a>
   <a href="#makeover" data-lang="en">Smile Makeovers</a><a class="lang-hide" href="#makeover" data-lang="el">Χαμόγελο</a>
-  <a href="#gallery" data-lang="en">Space</a><a class="lang-hide" href="#gallery" data-lang="el">Χώρος</a>
-  <a href="#reviews" data-lang="en">Reviews</a><a class="lang-hide" href="#reviews" data-lang="el">Αξιολογήσεις</a>
+  <a href="#reviews" data-lang="en">Reviews</a><a class="lang-hide" href="#reviews" data-lang="el">Κριτικές</a>
   <a href="#contact" data-lang="en">Book a Visit</a><a class="lang-hide" href="#contact" data-lang="el">Ραντεβού</a>
   <div class="overlay-flags">
     <button class="flag-btn active" data-set="en" aria-label="English"><svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40M60 0L0 40" stroke="#C8102E" stroke-width="4"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="12"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="7"/></svg></button>
@@ -636,16 +642,21 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
   <div class="hero-img">
     <img src="https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/160242352_798174224119840_8444748194887142802_n.jpg" alt="Modern dental clinic interior of Dr. George Glynos in Rhodes" loading="eager">
   </div>
+  <svg class="hero-arc" viewBox="0 0 1100 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M40 60 Q550 360 1060 60"/>
+  </svg>
   <div class="hero-content">
-    <span class="hero-eyebrow" data-lang="en">ORAL SURGEON · RHODES, GREECE</span>
-    <span class="hero-eyebrow lang-hide" data-lang="el">ΧΕΙΡΟΥΡΓΟΣ ΟΔΟΝΤΙΑΤΡΟΣ · ΡΟΔΟΣ</span>
+    <span class="hero-eyebrow" data-lang="en">Oral Surgeon · Rhodes, Greece</span>
+    <span class="hero-eyebrow lang-hide" data-lang="el">Χειρουργός Οδοντίατρος · Ρόδος</span>
     <h1 data-lang="en"><span class="word">A</span> <span class="word">reason</span> <span class="word">to</span> <span class="word"><em>smile</em> again.</span></h1>
-    <h1 class="lang-hide" data-lang="el"><span class="word">A</span> <span class="word">reason</span> <span class="word">to</span> <span class="word"><em>smile</em> again.</span></h1>
+    <h1 class="lang-hide" data-lang="el"><span class="word">Ένας</span> <span class="word">λόγος</span> <span class="word">να</span> <span class="word"><em>χαμογελάσετε</em> ξανά.</span></h1>
     <p class="hero-sub" data-lang="en">Advanced, digital, genuinely gentle dentistry. Two clinics on the island of Rhodes, fifteen years of care, and a smile designed for you.</p>
     <p class="hero-sub lang-hide" data-lang="el">Εξελιγμένη, ψηφιακή και πραγματικά ήπια οδοντιατρική. Δύο κλινικές στη Ρόδο, δεκαπέντε χρόνια φροντίδας και ένα χαμόγελο σχεδιασμένο για εσάς.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#contact" data-lang="en">Book a Visit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <a class="btn btn-primary lang-hide" href="#contact" data-lang="el">Κλείστε Ραντεβού <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="#contact" data-lang="en">LOCATIONS</a>
+      <a class="btn btn-ghost lang-hide" href="#contact" data-lang="el">ΤΟΠΟΘΕΣΙΕΣ</a>
       <a class="btn btn-ghost" href="#services" data-lang="en">Our Services</a>
       <a class="btn btn-ghost lang-hide" href="#services" data-lang="el">Οι Υπηρεσίες</a>
     </div>
@@ -670,7 +681,7 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
       <div class="about-badge"><b>15+</b><small data-lang="en">Years of care</small><small class="lang-hide" data-lang="el">Χρόνια φροντίδας</small></div>
     </div>
     <div class="about-body reveal d1">
-      <span class="eyebrow" data-lang="en">The Dentist</span><span class="eyebrow lang-hide" data-lang="el">Ο Οδοντίατρος</span>
+      <span class="eyebrow" data-lang="en">The Dentist</span><span class="eyebrow lang-hide" data-lang="el">Ο Ιατρός</span>
       <h2 data-lang="en">Dr. George Glynos</h2>
       <h2 class="lang-hide" data-lang="el">Γεώργιος Γλυνός</h2>
       <p data-lang="en">An Oral Surgeon running two state-of-the-art private clinics on the island of Rhodes, and a graduate of the renowned Charles University Faculty of Dentistry in Prague. With a steady path of more than fifteen years in continuous clinical practice, he has built a reputation across the island for care of the highest standard — grounded in scientific excellence and an honest relationship with every patient.</p>
@@ -758,17 +769,17 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
       <div class="acc-item">
         <button class="acc-trigger" aria-expanded="false">
           <span class="acc-num">04</span>
-          <span class="acc-title" data-lang="en">Prevention & Paediatric Care (up to 12)</span><span class="acc-title lang-hide" data-lang="el">Πρόληψη & Παιδοδοντική (έως 12 ετών)</span>
+          <span class="acc-title" data-lang="en">Prevention & Paediatric Care (from age 5)</span><span class="acc-title lang-hide" data-lang="el">Πρόληψη & Παιδοδοντική (από 5 ετών)</span>
           <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
         </button>
         <div class="acc-body">
           <div class="acc-body-inner">
-            <p data-lang="en">Prevention is the foundation of oral health. We carry out detailed oral examinations and cleanings to remove tartar and plaque. Dr. Glynos is highly experienced with children up to twelve, offering a painless, friendly check-up that frees young patients from any fear of the dentist.</p>
-            <p class="lang-hide" data-lang="el">Η πρόληψη αποτελεί το θεμέλιο της στοματικής υγείας. Πραγματοποιείται λεπτομερής στοματικός έλεγχος και καθαρισμός για την αφαίρεση τρυγίας και πλάκας. Ο ιατρός διαθέτει μεγάλη εξοικείωση με παιδιά έως 12 ετών, προσφέροντας έναν ανώδυνο και φιλικό έλεγχο που απαλλάσσει τους μικρούς ασθενείς από τον φόβο.</p>
+            <p data-lang="en">Prevention is the foundation of oral health. We carry out detailed oral examinations and cleanings to remove tartar and plaque. Dr. Glynos is highly experienced with children from age 5, offering a painless, friendly check-up that frees young patients from any fear of the dentist.</p>
+            <p class="lang-hide" data-lang="el">Η πρόληψη αποτελεί το θεμέλιο της στοματικής υγείας. Πραγματοποιείται λεπτομερής στοματικός έλεγχος και καθαρισμός για την αφαίρεση τρυγίας και πλάκας. Ο ιατρός διαθέτει μεγάλη εξοικείωση με παιδιά από 5 ετών, προσφέροντας έναν ανώδυνο και φιλικό έλεγχο που απαλλάσσει τους μικρούς ασθενείς από τον φόβο.</p>
             <div class="acc-tags">
               <span data-lang="en">Oral check-up</span><span class="lang-hide" data-lang="el">Στοματικός έλεγχος</span>
               <span data-lang="en">Cleaning</span><span class="lang-hide" data-lang="el">Καθαρισμός</span>
-              <span data-lang="en">Children up to 12</span><span class="lang-hide" data-lang="el">Παιδιά έως 12</span>
+              <span data-lang="en">Children from age 5</span><span class="lang-hide" data-lang="el">Παιδιά από 5</span>
             </div>
           </div>
         </div>
@@ -878,7 +889,7 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
       <div class="rev-stat reveal d1">
         <div class="stars">★★★★★</div>
         <b>300+</b>
-        <small data-lang="en">Five-star Google reviews</small><small class="lang-hide" data-lang="el">Πεντάστερες αξιολογήσεις Google</small>
+        <small data-lang="en">Five-star Google reviews</small><small class="lang-hide" data-lang="el">Πεντάστερες κριτικές Google</small>
         <div class="rev-cert"><img src="https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/unnamed-25.jpg" alt="Awards and certifications" loading="lazy"></div>
       </div>
     </div>
@@ -887,7 +898,7 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
       <div class="car-track" id="carTrack"></div>
       <div class="car-ctrl">
         <a class="rev-link" href="https://www.google.com/search?client=safari&hs=Vy3p&sca_esv=99fd30d500723c13&cs=1&sxsrf=ANbL-n6k6Gp3ofJb3ZD1R0D94H8U-deiLA:1781265515301&q=Glynos+George+Dentist+Reviews&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNLY0Nje0sDA2MQGyTM0tgcwNjIyvGGXdcyrz8osV3FPzi9JTFVxS80oyi0sUglLLMlPLixex4pcHAOp0mjtbAAAA&rldimm=13937188344393579883&tbm=lcl&hl=en-GR&sa=X#lkt=LocalPoiReviews" target="_blank" rel="noopener">
-          <span data-lang="en">Read all reviews on Google</span><span class="lang-hide" data-lang="el">Διαβάστε όλες τις αξιολογήσεις</span>
+          <span data-lang="en">Read all reviews on Google</span><span class="lang-hide" data-lang="el">Διαβάστε όλες τις κριτικές</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <div class="car-arrows">
@@ -918,8 +929,8 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
         <div class="faq-a"><p data-lang="en">Absolutely. Many of our patients are visitors to Rhodes. We provide clear documentation, x-rays and prescriptions you can take to your dentist back home.</p><p class="lang-hide" data-lang="el">Φυσικά. Πολλοί ασθενείς μας είναι επισκέπτες της Ρόδου. Παρέχουμε σαφή έγγραφα, ακτινογραφίες και συνταγές που μπορείτε να πάρετε στον οδοντίατρό σας.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span data-lang="en">Up to what age do you see children?</span><span class="lang-hide" data-lang="el">Έως ποια ηλικία δέχεστε παιδιά;</span><span class="pm"></span></button>
-        <div class="faq-a"><p data-lang="en">We welcome children up to twelve years old, with a gentle, friendly approach designed to keep young patients calm and free of any fear of the dentist.</p><p class="lang-hide" data-lang="el">Δεχόμαστε παιδιά έως 12 ετών, με μια ήπια και φιλική προσέγγιση που κρατά τους μικρούς ασθενείς ήρεμους και χωρίς φόβο.</p></div>
+        <button class="faq-q" aria-expanded="false"><span data-lang="en">From what age do you see children?</span><span class="lang-hide" data-lang="el">Από ποια ηλικία δέχεστε παιδιά;</span><span class="pm"></span></button>
+        <div class="faq-a"><p data-lang="en">We welcome children from age 5 onwards, with a gentle, friendly approach designed to keep young patients calm and free of any fear of the dentist.</p><p class="lang-hide" data-lang="el">Δεχόμαστε παιδιά από 5 ετών και άνω, με μια ήπια και φιλική προσέγγιση που κρατά τους μικρούς ασθενείς ήρεμους και χωρίς φόβο.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false"><span data-lang="en">Where are your two clinics located?</span><span class="lang-hide" data-lang="el">Πού βρίσκονται τα δύο ιατρεία;</span><span class="pm"></span></button>
@@ -965,11 +976,11 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
       <div class="maps-container reveal">
         <div class="map-wrap">
           <h4 data-lang="en">RHODES TOWN</h4><h4 class="lang-hide" data-lang="el">ΡΟΔΟΣ (ΠΟΛΗ)</h4>
-          <iframe title="Clinic location in Rhodes Town" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Akti%20Miaouli%208,%20Rhodes+(Dr.%20George%20Glynos%20-%20Rhodes)&t=&z=16&ie=UTF8&iwloc=B&output=embed"></iframe>
+          <iframe title="Clinic location in Rhodes Town" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Akti%20Miaouli%208,%20Rhodes+(Dr.%20George%20Glynos%20-%20Rhodes)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
         </div>
         <div class="map-wrap">
           <h4 data-lang="en">LARDOS</h4><h4 class="lang-hide" data-lang="el">ΛΑΡΔΟΣ</h4>
-          <iframe title="Clinic location in Lardos" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Lardos,%20Rhodes+(Dr.%20George%20Glynos%20-%20Lardos)&t=&z=15&ie=UTF8&iwloc=B&output=embed"></iframe>
+          <iframe title="Clinic location in Lardos" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Lardos,%20Rhodes+(Dr.%20George%20Glynos%20-%20Lardos)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
         </div>
       </div>
     </div>
@@ -985,9 +996,9 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
       <b>George Glynos<span style="display:block;font-family:'Manrope';font-size:.6rem;letter-spacing:.3em;opacity:.8;color:var(--aqua);text-transform:uppercase;margin-top:.3rem">Dentist · Rhodes</span></b>
     </a>
     <nav class="foot-links">
-      <a href="#about" data-lang="en">About</a><a class="lang-hide" href="#about" data-lang="el">Οδοντίατρος</a>
+      <a href="#about" data-lang="en">About</a><a class="lang-hide" href="#about" data-lang="el">Ιατρός</a>
       <a href="#services" data-lang="en">Services</a><a class="lang-hide" href="#services" data-lang="el">Υπηρεσίες</a>
-      <a href="#reviews" data-lang="en">Reviews</a><a class="lang-hide" href="#reviews" data-lang="el">Αξιολογήσεις</a>
+      <a href="#reviews" data-lang="en">Reviews</a><a class="lang-hide" href="#reviews" data-lang="el">Κριτικές</a>
       <a href="#contact" data-lang="en">Contact</a><a class="lang-hide" href="#contact" data-lang="el">Επικοινωνία</a>
       <a href="https://www.facebook.com/DrMagicTooth/?locale=el_GR" target="_blank" rel="noopener">Facebook</a>
     </nav>
@@ -1068,7 +1079,17 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
     "https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/123111721_717848005485796_6768564423436072533_n.png.jpeg",
     "https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/123848447_724377381499525_3809728171707895309_n.png.jpeg",
     "https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/126516232_734872433783353_9016621532355706689_n.png.jpeg",
-    "https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/127710056_738920823378514_8834453535916052737_n.png.jpeg"
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/127710056_738920823378514_8834453535916052737_n.png.jpeg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/58a31f86f07ca9a13d644dcfc81a4bf996b9407b/119783988_690386324898631_3146349954888084862_n.png.jpeg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/58a31f86f07ca9a13d644dcfc81a4bf996b9407b/120150024_694091524528111_1738391048363103654_n.png.jpeg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/58a31f86f07ca9a13d644dcfc81a4bf996b9407b/120653676_702112180392712_996951416644034592_n.png-2.jpeg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/58a31f86f07ca9a13d644dcfc81a4bf996b9407b/121619813_707842186486378_5118564662906380484_n.png.jpeg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/58a31f86f07ca9a13d644dcfc81a4bf996b9407b/122256832_711740782763185_3053469757504370736_n.png-2.jpeg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/58a31f86f07ca9a13d644dcfc81a4bf996b9407b/123111721_717848005485796_6768564423436072533_n.png-2.jpeg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/58a31f86f07ca9a13d644dcfc81a4bf996b9407b/126516232_734872433783353_9016621532355706689_n.png-2.jpeg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/58a31f86f07ca9a13d644dcfc81a4bf996b9407b/127710056_738920823378514_8834453535916052737_n.png-2.jpeg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/58a31f86f07ca9a13d644dcfc81a4bf996b9407b/41070165_283990505538217_2314081052840165376_n.jpg",
+    "https://raw.githubusercontent.com/agelmet/GYLNOS/58a31f86f07ca9a13d644dcfc81a4bf996b9407b/41599997_285671085370159_6863955740189523968_n.jpg"
   ];
   const baMain=$('#baMain'), baThumbs=$('#baThumbs');
   
@@ -1139,7 +1160,7 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
     c.innerHTML=`<div class="stars">★★★★★</div>
       <p data-lang="en">${r.en}</p><p class="lang-hide" data-lang="el">${r.el}</p>
       <button class="more" data-lang="en">${moreEn}</button><button class="more lang-hide" data-lang="el">${moreEl}</button>
-      <div class="author"><span class="avatar">${initial}</span><div><b>${r.n}</b><small data-lang="en">Google Review</small><small class="lang-hide" data-lang="el">Αξιολόγηση Google</small></div></div>`;
+      <div class="author"><span class="avatar">${initial}</span><div><b>${r.n}</b><small data-lang="en">Google Review</small><small class="lang-hide" data-lang="el">Κριτική Google</small></div></div>`;
     $$('.more',c).forEach(btn=>btn.addEventListener('click',()=>c.classList.toggle('expanded')));
     track.appendChild(c);
   });
