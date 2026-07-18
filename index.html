@@ -60,11 +60,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 #loader.done{opacity:0;visibility:hidden;transform:scale(1.05);}
 .loader-mark{
-  width:90px;height:90px;
+  width:100px;height:100px;
   animation:floaty 2.4s ease-in-out infinite;
   filter: drop-shadow(var(--aqua-glow));
 }
-.loader-mark svg{width:100%;height:100%}
+.loader-mark img{width:100%;height:100%;object-fit:contain;}
 .loader-name{
   font-family:var(--display);
   color:#fff;font-size:clamp(1.8rem,5vw,2.8rem);
@@ -115,7 +115,7 @@ header.scrolled{
 }
 .brand{display:flex;align-items:center;gap:.8rem;color:#fff;transition:color .4s}
 header.scrolled .brand{color:var(--ink)}
-.brand svg{width:34px;height:34px;flex:none; color: var(--aqua); filter:drop-shadow(0 0 10px rgba(43,166,173,0.3));}
+.brand img{width:40px;height:40px;flex:none; filter:drop-shadow(0 0 10px rgba(43,166,173,0.3)); object-fit:contain;}
 .brand-name{font-family:var(--display);font-weight:500;line-height:1;font-size:1.1rem;letter-spacing:.02em}
 .brand-name span{display:block;font-family:var(--body);font-size:.65rem;letter-spacing:.32em;text-transform:uppercase;font-weight:700;color:var(--aqua);margin-top:.3rem}
 header.scrolled .brand-name span {color: var(--teal);}
@@ -196,6 +196,16 @@ body.menu-open .overlay-flags{opacity:1}
     linear-gradient(180deg,rgba(8,24,34,.6) 0%,rgba(8,24,34,.2) 40%,rgba(8,24,34,.7) 80%,rgba(8,24,34,.98) 100%),
     radial-gradient(120% 80% at 80% 20%,rgba(43,166,173,.35),transparent 60%);
 }
+.hero-arc{
+  position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);
+  width:min(95vw,1100px);height:auto;z-index:1;pointer-events:none;
+  opacity:0; filter: drop-shadow(var(--aqua-glow));
+}
+.hero-arc path{stroke:var(--aqua);stroke-width:2.5;fill:none;
+  stroke-dasharray:1400;stroke-dashoffset:1400;}
+.hero.in .hero-arc{opacity:1;transition:opacity 1s 1s}
+.hero.in .hero-arc path{animation:draw 3s var(--ease-out-expo) 1s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
 .hero-content{position:relative;z-index:2;max-width:var(--container);margin:0 auto;width:100%}
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:.8rem;
@@ -543,7 +553,7 @@ h2 em{font-style:italic;color:var(--teal)}
 footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3rem}
 .foot-inner{max-width:var(--container);margin:0 auto;display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:center}
 .foot-brand{display:flex;align-items:center;gap:1rem;color:#fff}
-.foot-brand svg{width:36px;height:36px; filter: drop-shadow(var(--aqua-glow));}
+.foot-brand img{width:40px;height:40px; filter: drop-shadow(var(--aqua-glow));}
 .foot-brand b{font-family:var(--display);font-weight:500;font-size:1.3rem}
 .foot-links{display:flex;flex-wrap:wrap;gap:2rem;font-size:.95rem; font-weight: 600;}
 .foot-links a:hover{color:var(--aqua); text-shadow: var(--aqua-glow);}
@@ -584,9 +594,7 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
 
 <div id="loader">
   <div class="loader-mark">
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M32 10c-8 0-13 4-13 4s-3 2-3 9c0 8 3 16 6 24 2 5 5 7 7 7 3 0 3-6 6-6s3 6 6 6c2 0 5-2 7-7 3-8 6-16 6-24 0-7-3-9-3-9s-5-4-13-4c-3 0-5 1-6 1s-3-1-6-1z" stroke="#2ba6ad" stroke-width="2.5" stroke-linejoin="round"/>
-    </svg>
+    <img src="https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/Gemini_Generated_Image_g6v2r5g6v2r5g6v2-2.png" alt="George Glynos Logo">
   </div>
   <div class="loader-name" data-lang="en">George Glynos<span>Dentist · Rhodes</span></div>
   <div class="loader-name lang-hide" data-lang="el">Γεώργιος Γλυνός<span>Οδοντίατρος · Ρόδος</span></div>
@@ -596,7 +604,7 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
 <header id="header">
   <div class="nav-inner">
     <a href="#top" class="brand" aria-label="George Glynos Dentist home">
-      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 10c-8 0-13 4-13 4s-3 2-3 9c0 8 3 16 6 24 2 5 5 7 7 7 3 0 3-6 6-6s3 6 6 6c2 0 5-2 7-7 3-8 6-16 6-24 0-7-3-9-3-9s-5-4-13-4c-3 0-5 1-6 1s-3-1-6-1z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+      <img src="https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/Gemini_Generated_Image_g6v2r5g6v2r5g6v2-2.png" alt="George Glynos Logo">
       <span class="brand-name">George Glynos<span>Dentist · Rhodes</span></span>
     </a>
     <nav class="nav-links">
@@ -780,37 +788,6 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
   </div>
 </section>
 
-<section class="sports" id="sports">
-  <div class="wrap">
-    <div class="sports-glow" aria-hidden="true"></div>
-    <span class="eyebrow reveal" data-lang="en">The athlete's shield</span><span class="eyebrow reveal lang-hide" data-lang="el">Η ασπίδα του αθλητή</span>
-    <h2 class="reveal" data-lang="en">Why your mouth <em>decides</em> your performance.</h2>
-    <h2 class="reveal lang-hide" data-lang="el">Γιατί το στόμα <em>καθορίζει</em> τις επιδόσεις σας.</h2>
-    <p class="sports-lead reveal d1" data-lang="en">In fifteen years of practice I've watched countless athletes invest in equipment, nutritionists and physios — while overlooking one decisive factor in their physical output: their mouth. Sports Dentistry is one of the most important, and most neglected, fields of athletic health.</p>
-    <p class="sports-lead reveal d1 lang-hide" data-lang="el">Στα 15 χρόνια της κλινικής μου διαδρομής έχω δει αμέτρητους αθλητές να επενδύουν σε εξοπλισμό, διατροφολόγους και φυσικοθεραπευτές, αγνοώντας έναν βασικό παράγοντα της απόδοσής τους: το στόμα τους. Η Αθλητική Οδοντιατρική είναι ένας από τους πιο σημαντικούς, αλλά συχνά παραμελημένους κλάδους της αθλητικής υγείας.</p>
-    <div class="sports-grid">
-      <div class="shield reveal">
-        <svg class="shield-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
-        <h3 data-lang="en">The hidden brake</h3><h3 class="lang-hide" data-lang="el">Το κρυφό «φρένο»</h3>
-        <p data-lang="en">A chronic, symptom-free inflammation — neglected gum disease or a tooth needing a root canal — constantly burdens the immune system. The body spends energy fighting it, so the athlete tires sooner, picks up more muscle injuries and recovers more slowly.</p>
-        <p class="lang-hide" data-lang="el">Μια χρόνια, ασυμπτωματική φλεγμονή (μια παραμελημένη ουλίτιδα ή ένα δόντι που χρειάζεται απονεύρωση) επιβαρύνει συνεχώς το ανοσοποιητικό. Το σώμα δαπανά ενέργεια για να την πολεμήσει, με αποτέλεσμα ο αθλητής να κουράζεται πιο εύκολα και να καθυστερεί η αποκατάστασή του.</p>
-      </div>
-      <div class="shield reveal d1">
-        <svg class="shield-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 8c4 0 4 8 0 8M19 8c-4 0-4 8 0 8"/></svg>
-        <h3 data-lang="en">Balance starts at the jaw</h3><h3 class="lang-hide" data-lang="el">Η ισορροπία ξεκινά από τη γνάθο</h3>
-        <p data-lang="en">A poor bite or unconscious clenching under effort (bruxism) puts tremendous strain on the temporomandibular joint. That tension travels to the neck, back and spine — affecting balance, alignment and the strength of the entire body.</p>
-        <p class="lang-hide" data-lang="el">Η κακή σύγκλειση ή το ασυνείδητο σφίξιμο κατά την προσπάθεια (βρυγμός) προκαλεί τρομερή καταπόνηση στην κροταφογναθική διάρθρωση. Η ένταση μεταφέρεται στον αυχένα, την πλάτη και τη σπονδυλική στήλη, επηρεάζοντας την ισορροπία, την ευθυγράμμιση και τη δύναμη όλου του σώματος.</p>
-      </div>
-      <div class="shield reveal d2">
-        <svg class="shield-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9c0-3 3-5 6-5s6 2 6 5c0 2-1 4-2 6s-1 4-4 4-3-2-4-4-2-4-2-6z"/></svg>
-        <h3 data-lang="en">The custom mouthguard</h3><h3 class="lang-hide" data-lang="el">Ο εξατομικευμένος νάρθηκας</h3>
-        <p data-lang="en">Off-the-shelf boil-and-bite guards restrict breathing and offer little real protection. In our Rhodes clinics we craft custom mouthguards from precise impressions — a shock absorber that protects teeth and jaw from fractures, stabilises the jaw and improves breathing and oxygenation during play.</p>
-        <p class="lang-hide" data-lang="el">Οι έτοιμοι νάρθηκες του εμπορίου δυσκολεύουν την αναπνοή και δεν προσφέρουν πραγματική προστασία. Στα ιατρεία μας στη Ρόδο κατασκευάζουμε εξατομικευμένους νάρθηκες κατόπιν ακριβούς αποτύπωσης — έναν «αποσβεστήρα κραδασμών» που προστατεύει δόντια και γνάθο από κατάγματα, σταθεροποιεί τη γνάθο και βελτιώνει την αναπνοή και την οξυγόνωση κατά τον αγώνα.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="process" id="process">
   <div class="wrap">
     <span class="eyebrow reveal" data-lang="en">How it works</span><span class="eyebrow reveal lang-hide" data-lang="el">Πώς λειτουργεί</span>
@@ -944,12 +921,43 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
         <h2 data-lang="en">Let's give you a reason to <em>smile.</em></h2>
         <h2 class="lang-hide" data-lang="el">Ας σας δώσουμε έναν λόγο να <em>χαμογελάσετε.</em></h2>
         <div class="ci-list">
-          <div class="ci"><div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><b data-lang="en">Rhodes Town</b><b class="lang-hide" data-lang="el">Ρόδος</b><span data-lang="en">Akti Miaouli 8, Rhodes, Dodecanese</span><span class="lang-hide" data-lang="el">Ακτή Μιαούλη 8, Ρόδος, Δωδεκάνησα</span></div></div>
-          <div class="ci"><div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><b data-lang="en">Lardos</b><b class="lang-hide" data-lang="el">Λάρδος</b><span data-lang="en">Lardos, Rhodes, Dodecanese</span><span class="lang-hide" data-lang="el">Λάρδος, Ρόδος, Δωδεκάνησα</span></div></div>
-          <div class="ci"><div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 1.9.6 2.8a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.5 2.8.6a2 2 0 011.7 2z"/></svg></div><div><b data-lang="en">Phone</b><b class="lang-hide" data-lang="el">Τηλέφωνο</b><a href="tel:+302241037600">+30 2241 037600</a></div></div>
+          <div class="ci">
+            <div class="ci-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 1.9.6 2.8a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.5 2.8.6a2 2 0 011.7 2z"/>
+              </svg>
+            </div>
+            <div>
+              <b data-lang="en">Phones</b><b class="lang-hide" data-lang="el">Τηλέφωνα</b>
+              <a href="tel:+302241037600" style="display:block; margin-bottom:0.3rem;">
+                <span data-lang="en" style="opacity:0.7; font-size:0.9em;">Rhodes:</span>
+                <span class="lang-hide" data-lang="el" style="opacity:0.7; font-size:0.9em;">Ρόδος:</span>
+                +30 2241 037600
+              </a>
+              <a href="tel:+302244044884" style="display:block;">
+                <span data-lang="en" style="opacity:0.7; font-size:0.9em;">Lardos:</span>
+                <span class="lang-hide" data-lang="el" style="opacity:0.7; font-size:0.9em;">Λάρδος:</span>
+                +30 2244 044884
+              </a>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+            </div>
+            <div>
+              <b data-lang="en">WhatsApp</b><b class="lang-hide" data-lang="el">WhatsApp</b>
+              <a href="https://wa.me/306975810892">+30 6975810892</a>
+            </div>
+          </div>
           <div class="ci"><div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg></div><div><b data-lang="en">Email</b><b class="lang-hide" data-lang="el">Email</b><a href="mailto:glynosgiorgos@gmail.com">glynosgiorgos@gmail.com</a></div></div>
         </div>
         <div class="socials">
+          <a href="https://wa.me/306975810892" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.012c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          </a>
           <a href="https://www.facebook.com/DrMagicTooth/?locale=el_GR" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.5-3.5H14V3.8c0-1 .3-1.6 1.7-1.6H18V-.6C17.6-.7 16.4-.8 15-.8c-3 0-5 1.8-5 5.2V5.5H7V9h3v12h4z" transform="translate(0 1)"/></svg></a>
         </div>
       </div>
@@ -984,7 +992,7 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
 <footer>
   <div class="foot-inner">
     <a href="#top" class="foot-brand">
-      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 10c-8 0-13 4-13 4s-3 2-3 9c0 8 3 16 6 24 2 5 5 7 7 7 3 0 3-6 6-6s3 6 6 6c2 0 5-2 7-7 3-8 6-16 6-24 0-7-3-9-3-9s-5-4-13-4c-3 0-5 1-6 1s-3-1-6-1z" stroke="#2ba6ad" stroke-width="2.5" stroke-linejoin="round"/></svg>
+      <img src="https://raw.githubusercontent.com/agelmet/GYLNOS/refs/heads/main/Gemini_Generated_Image_g6v2r5g6v2r5g6v2-2.png" alt="George Glynos Logo">
       <b>George Glynos<span style="display:block;font-family:'Manrope';font-size:.6rem;letter-spacing:.3em;opacity:.8;color:var(--aqua);text-transform:uppercase;margin-top:.3rem">Dentist · Rhodes</span></b>
     </a>
     <nav class="foot-links">
