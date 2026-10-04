@@ -415,6 +415,9 @@ h2 em{font-style:italic;color:var(--teal)}
 .proc-step h3{font-family:var(--display);font-weight:500;font-size:1.4rem;margin-bottom:.8rem;color:var(--ink)}
 .proc-step p{color:#3c5663;font-size:1rem;font-weight:400; line-height: 1.6;}
 
+/* phones: the zoom-in of the intro and the hero photo must never widen the page */
+html{overflow-x:clip}
+
 /* MAKEOVER / before-after (Redesigned Slider) */
 .makeover{background:var(--sky)}
 .ba-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center}
@@ -428,9 +431,10 @@ h2 em{font-style:italic;color:var(--teal)}
   transition:opacity .6s var(--ease-out-expo), transform 5s ease-out;
 }
 .ba-stage img.fade{opacity:0; transform: scale(1.05);}
-.ba-thumbs{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap}
+.ba-thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:.75rem;margin-top:2rem}
+@media (max-width:600px){.ba-thumbs{grid-template-columns:repeat(4,1fr);gap:.6rem}}
 .ba-thumb{
-  width:80px;height:80px;border-radius:12px;overflow:hidden;
+  width:100%;height:auto;aspect-ratio:1;padding:0;border-radius:12px;overflow:hidden;
   border:3px solid transparent;opacity:.5;transition:all .4s var(--ease-out-expo);
   box-shadow: 0 10px 20px rgba(0,0,0,0.1); cursor: pointer;
 }
@@ -1117,20 +1121,29 @@ footer{background:#040e14;color:rgba(255,255,255,.5);padding:4rem var(--pad) 3re
   /* before / after swiper (New Fade Logic without cropping) */
   const baPairs=[
     "120653676_702112180392712_996951416644034592_n.png.jpeg",
+    "assets/makeovers/makeover-new-06.webp",
     "123111721_717848005485796_6768564423436072533_n.png.jpeg",
+    "assets/makeovers/makeover-new-04.webp",
     "123848447_724377381499525_3809728171707895309_n.png.jpeg",
+    "assets/makeovers/makeover-new-11.webp",
     "126516232_734872433783353_9016621532355706689_n.png.jpeg",
+    "assets/makeovers/makeover-new-03.webp",
     "127710056_738920823378514_8834453535916052737_n.png.jpeg",
+    "assets/makeovers/makeover-new-09.webp",
     "119783988_690386324898631_3146349954888084862_n.png.jpeg",
+    "assets/makeovers/makeover-new-01.webp",
     "120150024_694091524528111_1738391048363103654_n.png.jpeg",
-    "120653676_702112180392712_996951416644034592_n.png-2.jpeg",
+    "assets/makeovers/makeover-new-02.webp",
     "121619813_707842186486378_5118564662906380484_n.png.jpeg",
+    "assets/makeovers/makeover-new-05.webp",
     "122256832_711740782763185_3053469757504370736_n.png-2.jpeg",
-    "123111721_717848005485796_6768564423436072533_n.png-2.jpeg",
-    "126516232_734872433783353_9016621532355706689_n.png-2.jpeg",
-    "127710056_738920823378514_8834453535916052737_n.png-2.jpeg",
+    "assets/makeovers/makeover-new-07.webp",
     "41070165_283990505538217_2314081052840165376_n.jpg",
-    "41599997_285671085370159_6863955740189523968_n.jpg"
+    "assets/makeovers/makeover-new-08.webp",
+    "41599997_285671085370159_6863955740189523968_n.jpg",
+    "assets/makeovers/makeover-new-10.webp",
+    "assets/makeovers/makeover-new-12.webp",
+    "assets/makeovers/makeover-new-13.webp"
   ];
   const baMain=$('#baMain'), baThumbs=$('#baThumbs');
   
